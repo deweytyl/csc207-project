@@ -1,5 +1,6 @@
 package edu.grinnell.tranchri.cohnhan.deweytyl.hardtmad;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 
 /**
@@ -28,5 +29,10 @@ public class JSONUtils
     
     return array;
   } // parseArray(String)
+  
+  public static BigDecimal parseNumber(String str)
+  {
+    return null;
+  } // parseNumber(String)
   
 } // class JSONUtils
