@@ -5,5 +5,5 @@ package edu.grinnell.tranchri.cohnhan.deweytyl.hardtmad;
  */
 public class JSONParse
 {
-
+  
 }
