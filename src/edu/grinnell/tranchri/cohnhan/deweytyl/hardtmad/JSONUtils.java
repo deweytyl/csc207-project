@@ -24,24 +24,6 @@ public class JSONUtils
     return null;
   } // parseValue(String)
 
-  public static ArrayList<Object> parseArray(String arrStr)
-  {
-    ArrayList<Object> array = new ArrayList<Object>();
-    String[] strs = (arrStr.substring(1, arrStr.length() - 1)).split(",");
-    for (String str : strs)
-      {
-        array.add(parseValue(str));
-      } // for
-
-    return array;
-  } // parseArray(String)
-
-  public static JSONPair parsePair(String pairStr)
-  {
-    String[] strs = pairStr.split(":");
-    return new JSONPair(strs[0], parseValue(strs[1]));
-  } // parsePair(String pairStr)
-
   public static Map<String, JSONValue> getObject(JSONValue value)
     throws UnsupportedOperationException
   {
@@ -91,20 +73,16 @@ public class JSONUtils
   public static BigDecimal parseE(String str)
     throws Exception
   {
-    double val;
-    if (str.contains("e"))
+    String nums[] = str.split("e");
+    if (nums.length != 2)
       {
-        String nums[] = str.split("e");
-        if (nums.length != 2)
-          {
-            throw new Exception("Incorrect JSON syntax");
-          } // if
-        else
-          {
-           return new BigDecimal(Math.pow(Double.parseDouble(nums[0]),
-                         Double.parseDouble(nums[1])));
-          } // else
+        throw new Exception("Incorrect JSON syntax");
       } // if
+    else
+      {
+        return new BigDecimal(Math.pow(Double.parseDouble(nums[0]),
+                                       Double.parseDouble(nums[1])));
+      } // else
   } // parseE(String)
 
   static class JSONPair
