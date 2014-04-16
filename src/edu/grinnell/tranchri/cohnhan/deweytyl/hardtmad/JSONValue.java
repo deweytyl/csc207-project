@@ -16,8 +16,7 @@ public interface JSONValue
   /**
    * Get the wrapped object
    * 
-   * @return obj
-   *    the Java representation of the JSON value 
+   * @return obj the Java representation of the JSON value
    */
   public Object value();
 }

@@ -34,18 +34,6 @@ public class JSONUtils
     return new JSONPair(strs[0], parseValue(strs[1]));
   } // parsePair(String pairStr)
 
-  public static ArrayList<Object> parseArray(String arrStr)
-  {
-    ArrayList<Object> array = new ArrayList<Object>();
-    String[] strs = (arrStr.substring(1, arrStr.length() - 1)).split(",");
-    for (String str : strs)
-      {
-        array.add(parseValue(str));
-      } // for
-
-    return array;
-  } // parseArray(String)
-
   public static Map<String, JSONValue> getObject(JSONValue value)
     throws UnsupportedOperationException
   {
