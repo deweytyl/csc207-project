@@ -52,45 +52,6 @@ public class JSONUtils
     return null;
   } // getString(JSONValue)
 
-  /**
-   * Given a JSON string return a BigDecimal object.
-   * @param str
-   * @return BigDecimal
-   * @throws Exception when str is not correct JSON syntax
-   */
-  public static BigDecimal parseNumber(String str)
-    throws Exception
-  {
-    if (str.contains("e"))
-      {
-        parseE(str);
-      } // if exp or frac exp
-
-    // The number is an int or frac (double)
-    return new BigDecimal(str);
-  } // parseNumber(String)
-
-  /**
-   * Parse str around 'e' and find the value of #e# and return
-   * BigDecimal object with that value.
-   * @param str
-   * @return BigDecimal
-   * @throws Exception if incorrect JSON syntax
-   */
-  public static BigDecimal parseE(String str)
-    throws Exception
-  {
-    String nums[] = str.split("e");
-    if (nums.length != 2)
-      {
-        throw new Exception("Incorrect JSON syntax");
-      } // if
-    else
-      {
-        return new BigDecimal(Math.pow(Double.parseDouble(nums[0]),
-                                       Double.parseDouble(nums[1])));
-      } // else
-  } // parseE(String)
 
   static class JSONPair
   {
