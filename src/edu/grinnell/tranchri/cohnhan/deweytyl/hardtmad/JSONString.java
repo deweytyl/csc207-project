@@ -60,13 +60,20 @@ public class JSONString
   /**
    * Given a JSON string return a JSONString object.
    * @param str
-   * @return 
+   * @return JSONString
    * @throws Exception when str is not correct JSON syntax
    */
   public static JSONString parseString(Queue<Character> charQueue)
       throws Exception
     {
-      // TODO Method Stub
-      return null;
+      // Make empty string
+      String val = "";
+      
+      while(charQueue.peek() != null)
+        {
+          val += charQueue.poll();
+        } // while
+      
+      return new JSONString(val);
     } // parseString(String)
 } // class JSONString
