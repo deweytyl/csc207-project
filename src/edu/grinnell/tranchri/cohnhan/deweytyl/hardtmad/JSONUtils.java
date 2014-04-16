@@ -10,12 +10,8 @@ import java.util.Map;
  * Maybe we could make a JSONValueParser object. Up to us. We should talk about
  * it later, but for now let's just write static methods.
  * 
- * Character type keys: 
- *      String: 's' 
- *      Number: 'n' 
- *      Object: 'o' 
- *      Array: 'a' 
- *      Constant: 'c'
+ * Character type keys: String: 's' Number: 'n' Object: 'o' Array: 'a' Constant:
+ * 'c'
  * 
  * JSONValue interface might be useful
  */
@@ -52,33 +48,33 @@ public class JSONUtils
     // TODO Method Stub
     return null;
   } // getObject(JSONValue)
-  
+
   public static JSONValue[] getArray(JSONValue value)
-      throws UnsupportedOperationException
-    {
-      // TODO Method Stub
-      return null;
-    } // getArray(JSONValue)
-  
+    throws UnsupportedOperationException
+  {
+    // TODO Method Stub
+    return null;
+  } // getArray(JSONValue)
+
   public static BigDecimal getNumber(JSONValue value)
-      throws UnsupportedOperationException
-    {
-      // TODO Method Stub
-      return null;
-    } // getNumber(JSONValue)
-  
+    throws UnsupportedOperationException
+  {
+    // TODO Method Stub
+    return null;
+  } // getNumber(JSONValue)
+
   public static String getString(JSONValue value)
-      throws UnsupportedOperationException
-    {
-      // TODO Method Stub
-      return null;
-    } // getString(JSONValue)
+    throws UnsupportedOperationException
+  {
+    // TODO Method Stub
+    return null;
+  } // getString(JSONValue)
 
   public static BigDecimal parseNumber(String str)
     throws Exception
   {
     BigDecimal num = new BigDecimal(str);
-    
+
     // Different cases:
     // If the number is an integer, return an Integer object.
     // Can return BigDecimal(str)
@@ -91,7 +87,26 @@ public class JSONUtils
 
     return null;
   } // parseNumber(String)
-  
+
+  public static BigDecimal parseE(String str)
+    throws Exception
+  {
+    double val;
+    if (str.contains("e"))
+      {
+        String nums[] = str.split("e");
+        if (nums.length != 2)
+          {
+            throw new Exception("Incorrect JSON syntax");
+          } // if
+        else
+          {
+           return new BigDecimal(Math.pow(Double.parseDouble(nums[0]),
+                         Double.parseDouble(nums[1])));
+          } // else
+      } // if
+  } // parseE(String)
+
   static class JSONPair
   {
     /**
