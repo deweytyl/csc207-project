@@ -77,6 +77,7 @@ public class JSONNumber
     while (charQueue.peek() != null)
       {
         // If String is of form "xEy"
+        // *********Is it lowercase e?
         if (charQueue.peek() == 'E')
           {
             String exptStr = "";
