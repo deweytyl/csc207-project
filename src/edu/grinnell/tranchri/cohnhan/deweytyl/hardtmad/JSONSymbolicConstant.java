@@ -63,7 +63,7 @@ public class JSONSymbolicConstant
    * Given a JSON string return a JSONSymbolicConstant object.
    * 
    * @param str
-   * @return JSONSymbolicConstant
+   * @return JSONSymbolicConstantg
    * @throws Exception
    *           when str is not correct JSON syntax
    */
@@ -79,8 +79,6 @@ public class JSONSymbolicConstant
       } // while
 
     return new JSONSymbolicConstant(val);
-
-    // return new JSONPair(strs[0], JSONUtils.parseValue(strs[1]));
 
   } // parseSymbolicConstant(String)
 } // JSONSymbolicConstant
