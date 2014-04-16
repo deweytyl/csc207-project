@@ -55,19 +55,13 @@ public class JSONUtils
   public static BigDecimal parseNumber(String str)
     throws Exception
   {
-    BigDecimal num = new BigDecimal(str);
+    if (str.contains("e"))
+      {
+        parseE(str);
+      } // if exp or frac exp
 
-    // Different cases:
-    // If the number is an integer, return an Integer object.
-    // Can return BigDecimal(str)
-    // int frac
-    // Can return BigDecimal(str)
-    // int exp
-    // Write parseE
-    // int frac exp
-    // Waiting on parseE
-
-    return null;
+    // Else the number is an int or frac (double)
+    return new BigDecimal(str);
   } // parseNumber(String)
 
   public static BigDecimal parseE(String str)
