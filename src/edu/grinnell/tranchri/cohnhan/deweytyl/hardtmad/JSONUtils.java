@@ -28,12 +28,6 @@ public class JSONUtils
     return null;
   } // parseValue(String)
 
-  public static JSONPair parsePair(String pairStr)
-  {
-    String[] strs = pairStr.split(":");
-    return new JSONPair(strs[0], parseValue(strs[1]));
-  } // parsePair(String pairStr)
-
   public static Map<String, JSONValue> getObject(JSONValue value)
     throws UnsupportedOperationException
   {
@@ -67,23 +61,5 @@ public class JSONUtils
     return null;
   } // parseNumber(String)
   
-  static class JSONPair
-  {
-    /**
-     * A String representing the key of this key-value pair
-     */
-    String key;
-
-    /**
-     * The value of this key-value pair
-     */
-    JSONValue value;
-
-    public JSONPair(String str, JSONValue o)
-    {
-      key = str;
-      value = o;
-    } // JSONPair(String, JSONValue)
-  } // class JSONPair
 
 } // class JSONUtils
