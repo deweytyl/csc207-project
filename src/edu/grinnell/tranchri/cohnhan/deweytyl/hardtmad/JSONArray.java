@@ -3,23 +3,22 @@ package edu.grinnell.tranchri.cohnhan.deweytyl.hardtmad;
 import java.util.ArrayList;
 
 public class JSONArray
-    extends
-      ArrayList<JSONValue>
     implements
       JSONValue
-
 {
+  public ArrayList<JSONValue> elements;
+  
   @Override
   public char type()
   {
     return 'c';
-  }
+  } // type()
 
   @Override
   public Object value()
   {
-    return this.toArray();
-  }
+    return elements;
+  } // value()
   
   public static ArrayList<JSONValue> parseArray(String arrStr)
   {
@@ -32,4 +31,4 @@ public class JSONArray
 
     return array;
   } // parseArray(String)
-}
+} // class JSONArray
