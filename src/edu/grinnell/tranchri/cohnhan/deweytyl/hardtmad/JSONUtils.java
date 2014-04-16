@@ -39,28 +39,28 @@ public class JSONUtils
   {
     // TODO Method Stub
     return null;
-  }
+  } // getObject(JSONValue)
   
   public static JSONValue[] getArray(JSONValue value)
       throws UnsupportedOperationException
     {
       // TODO Method Stub
       return null;
-    }
+    } // getArray(JSONValue)
   
   public static BigDecimal getNumber(JSONValue value)
       throws UnsupportedOperationException
     {
       // TODO Method Stub
       return null;
-    }
+    } // getNumber(JSONValue)
   
   public static String getString(JSONValue value)
       throws UnsupportedOperationException
     {
       // TODO Method Stub
       return null;
-    }
+    } // getString(JSONValue)
 
   public static BigDecimal parseNumber(String str)
   {
@@ -83,7 +83,7 @@ public class JSONUtils
     {
       key = str;
       value = o;
-    }
-  }
+    } // JSONPair(String, JSONValue)
+  } // class JSONPair
 
 } // class JSONUtils

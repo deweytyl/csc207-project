@@ -19,4 +19,4 @@ public interface JSONValue
    * @return obj the Java representation of the JSON value
    */
   public Object value();
-}
+} // interface JSONValue

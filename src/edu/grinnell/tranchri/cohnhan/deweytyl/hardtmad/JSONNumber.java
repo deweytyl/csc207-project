@@ -4,27 +4,26 @@ import java.math.BigDecimal;
 import java.math.BigInteger;
 
 public class JSONNumber
-    extends
-      BigDecimal
     implements
       JSONValue
 {
-
-  public JSONNumber(BigInteger val)
+  public BigDecimal value;
+  
+  public JSONNumber(BigDecimal num)
   {
-    super(val);
-  }
+    value = num;
+  } // JSONNumber(BigInteger)
 
   @Override
   public char type()
   {
     return 'n';
-  }
+  } // type()
 
   @Override
   public Object value()
   {
-    return this.doubleValue();
-  }
+    return this.value;
+  } // value()
 
-}
+} //class JSONNumber
