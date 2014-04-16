@@ -48,7 +48,18 @@ public class JSONParse
     return objectType; 
   }
 
-  public Object value; 
+  public Object value (char type, String str)
+  {
+    switch(type)
+    {
+      case 's':
+         return; 
+      case 'o':
+      case 'a':
+      case 'c':
+      case 'n':
+    }
+  }
   
 >>>>>>> a6894353485b41cc756153df62e6be7d26fb7287
 } // class JSONParse
