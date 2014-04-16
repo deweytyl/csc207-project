@@ -21,6 +21,11 @@ public class JSONString
   public Object value()
   {
     return contents;
-  } // value()
-
+  } // value() 
+  
+  public static JSONString parseString(String str)
+      throws Exception
+    {
+      return new JSONString(str);
+    } // parseString(String)
 } // class JSONString

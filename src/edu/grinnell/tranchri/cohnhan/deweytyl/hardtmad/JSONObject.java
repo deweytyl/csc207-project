@@ -31,6 +31,7 @@ public class JSONObject
   // +-----------------------+
   
   public static JSONObject parseObject(String objectStr)
+    throws Exception
   {
     String[] pairStrs = (objectStr.substring(1, objectStr.length() - 1)).split(",");
     
@@ -43,6 +44,7 @@ public class JSONObject
       } // for
     
     return new JSONObject(map);
+    
   } // parseObject(String)
   
   // +--------------------------+----------------------------------------
@@ -79,9 +81,10 @@ public class JSONObject
     // | Utility Class Methods |
     // +-----------------------+
     
-    public static JSONPair parsePair(String pairStr)
+    public static JSONPair parsePair(String pairStr) throws Exception
     {
       String[] strs = pairStr.split(":");
+      // parseValue no longer returns JSONValue, helper methods return JSONValues 
       return new JSONPair(strs[0], JSONUtils.parseValue(strs[1]));
     } // parsePair(String pairStr)
   } // class JSONPair

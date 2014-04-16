@@ -32,17 +32,19 @@ public class JSONNumber
    * @return BigDecimal
    * @throws Exception when str is not correct JSON syntax
    */
-  public BigDecimal parseNumber(String str)
+  public static JSONNumber parseNumber(String str)
     throws Exception
   {
+    BigDecimal val;
     if (str.contains("e"))
       {
-        this.value = parseE(str);
+        val = parseE(str);
       } // if exp or frac exp
 
     // The number is an int or frac (double)
-    this.value = new BigDecimal(str);
-    return this.value;
+    val = new BigDecimal(str);
+    return new JSONNumber(val);
+    //return val;
   } // parseNumber(String)
 
   /**

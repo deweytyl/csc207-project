@@ -5,5 +5,8 @@ package edu.grinnell.tranchri.cohnhan.deweytyl.hardtmad;
  */
 public class JSONParse
 {
-  
+  public static JSONValue parse(Object obj)
+  {
+    return null; // STUB
+  } // parse(Object)
 } // class JSONParse
