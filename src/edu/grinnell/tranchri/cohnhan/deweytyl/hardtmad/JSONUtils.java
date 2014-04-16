@@ -61,6 +61,11 @@ public class JSONUtils
       // TODO Method Stub
       return null;
     }
+
+  public static BigDecimal parseNumber(String str)
+  {
+    return null;
+  } // parseNumber(String)
   
   static class JSONPair
   {
@@ -80,4 +85,5 @@ public class JSONUtils
       value = o;
     }
   }
+
 } // class JSONUtils
