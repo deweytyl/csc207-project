@@ -50,6 +50,7 @@ public class JSONUtils
    * @throws Exception
    */
   // ************Does this work for an empty queue?
+  // It throws an exception if its empty right?
   public static JSONValue parseValue(Queue<Character> charQueue)
     throws Exception
   {
