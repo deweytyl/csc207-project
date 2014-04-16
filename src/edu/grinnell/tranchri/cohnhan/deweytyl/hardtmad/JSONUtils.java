@@ -57,7 +57,20 @@ public class JSONUtils
     } // getString(JSONValue)
 
   public static BigDecimal parseNumber(String str)
+    throws Exception
   {
+    BigDecimal num = new BigDecimal(str);
+    
+    // Different cases:
+    // If the number is an integer, return an Integer object.
+    // Can return BigDecimal(str)
+    // int frac
+    // Can return BigDecimal(str)
+    // int exp
+    // Write parseE
+    // int frac exp
+    // Waiting on parseE
+
     return null;
   } // parseNumber(String)
   
