@@ -41,7 +41,7 @@ public class JSONArray
   // +-----------------------+
 
   /**
-   * Returns type of JSONArray object
+   * Returns character representation of type of JSONArray object
    */
   @Override
   public char type()
@@ -67,7 +67,16 @@ public class JSONArray
   public static JSONArray parseArray(Queue<Character> charQueue)
     throws Exception
   {
-    // TODO Method Stub
+ // Make String
+    ArrayList<JSONValue> val;
+    while (charQueue.peek() != null)
+      {
+        //val.add(charQueue.poll());
+      } // while
+    
+    //return new JSONArray (val);
+    
     return null;
+
   } // parseArray(String)
 } // class JSONArray

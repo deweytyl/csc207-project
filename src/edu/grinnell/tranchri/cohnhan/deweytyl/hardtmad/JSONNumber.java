@@ -6,6 +6,7 @@ import java.util.Queue;
 
 /**
  * JSONNumbers Class
+ * 
  * @implements JSONValue
  * 
  * @author Hannah Cohn
@@ -21,13 +22,13 @@ public class JSONNumber
   // +--------+----------------------------------------
   // | Fields |
   // +--------+
-  
+
   public BigDecimal value;
-  
+
   // +--------------+----------------------------------------
   // | Constructors |
   // +--------------+
-  
+
   /**
    * JSONNumber constructor
    * 
@@ -37,13 +38,13 @@ public class JSONNumber
   {
     value = num;
   } // JSONNumber(BigInteger)
-  
+
   // +-----------------------+----------------------------------------
   // | Utility Class Methods |
   // +-----------------------+
 
   /**
-   * Returns type of JSONNumber object
+   * Returns character representation of type of JSONNumber object
    */
   @Override
   public char type()
@@ -59,18 +60,42 @@ public class JSONNumber
   {
     return this.value;
   } // value()
-  
+
   /**
    * Given a JSON string return a JSONNumber object.
+   * 
    * @param str
    * @return BigDecimal
-   * @throws Exception when str is not correct JSON syntax
+   * @throws Exception
+   *           when str is not correct JSON syntax
    */
   public static JSONNumber parseNumber(Queue<Character> charQueue)
     throws Exception
   {
-    // TODO Method Stub
-    return null;
-  } // parseNumber(String)
+    // Make String of number
+    String val = "";
 
-} //class JSONNumber
+    while (charQueue.peek() != null)
+      {
+        // If String is of form "xEy"
+        if (charQueue.peek() == 'E')
+          {
+            String exptStr = "";
+            while (charQueue.peek() != null)
+              {
+                exptStr += charQueue.poll();
+              } // while
+
+            BigDecimal base = new BigDecimal(val);
+            int expt = Integer.parseInt(exptStr);
+            return new JSONNumber(base.scaleByPowerOfTen(expt));
+          } // if
+        val += charQueue.poll();
+      } // while
+
+    return new JSONNumber(new BigDecimal(val));
+
+    // throw new Exception("Incorrect representation");
+
+  } // parseNumber(String)
+} // class JSONNumber

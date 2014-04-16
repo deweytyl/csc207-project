@@ -33,8 +33,12 @@ public class JSONObject
     members = m;
   } // JSONObject(Map)
   
+  //+---------+-------------------------------------------------
+ // | Methods |
+ // +---------+
+  
   /**
-   * Returns type of JSONObject object
+   * Returns character representation of type of JSONObject object
    */
   @Override
   public char type()

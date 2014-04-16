@@ -22,11 +22,13 @@ import java.util.Queue;
 public class JSONUtils
 {
   /**
+   * Converts str to Queue of Characters so it can be parsed by
+   * parseValue(Queue<Character> charQueue)
    * 
    * @param str
-   * @return
+   * @return JSONValue of appropriate type
    * @throws Exception
-   */ 
+   */
   // ************Does this work for the empty string?
   public static JSONValue parseValue(String str)
     throws Exception
@@ -43,9 +45,9 @@ public class JSONUtils
   /**
    * Identity value type, parse, and return appropriate JSONValue
    * 
-   * @param charQueue 
-   * @return 
-   * @throws Exception 
+   * @param charQueue
+   * @return JSONValue of appropriate type
+   * @throws Exception
    */
   // ************Does this work for an empty queue?
   public static JSONValue parseValue(Queue<Character> charQueue)
@@ -56,9 +58,14 @@ public class JSONUtils
 
     if (ch != null)
       {
+     // valStr is a number
+        if (Character.isDigit(ch))
+          {
+            return JSONNumber.parseNumber(charQueue);
+          }
         switch (ch)
           {
-              // valStr is a string or a pair
+          // valStr is a string or a pair
             case '\"':
               return JSONString.parseString(charQueue);
               // valStr is an array
@@ -89,7 +96,7 @@ public class JSONUtils
    * Converts JSONObject to Java Map<String, JSONValue>
    * 
    * @param value
-   * @return 
+   * @return Map
    * @throws UnsupportedOperationException
    */
   @SuppressWarnings("unchecked")
@@ -108,7 +115,7 @@ public class JSONUtils
    * Converts JSONArray to Java Array of JSONValues
    * 
    * @param value
-   * @return
+   * @return Array of JSONValues
    * @throws UnsupportedOperationException
    */
   public static JSONValue[] getArray(JSONValue value)
@@ -126,7 +133,7 @@ public class JSONUtils
    * Converts JSONNumber to Java BigDecimal
    * 
    * @param value
-   * @return
+   * @return BigDecimal
    * @throws UnsupportedOperationException
    */
   public static BigDecimal getNumber(JSONValue value)
@@ -144,7 +151,7 @@ public class JSONUtils
    * Converts JSONString to Java String
    * 
    * @param value
-   * @return
+   * @return String
    * @throws UnsupportedOperationException
    */
   public static String getString(JSONValue value)

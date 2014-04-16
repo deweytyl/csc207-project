@@ -4,6 +4,7 @@ import java.util.Queue;
 
 /**
  * JSONSymbolicConstant Class
+ * 
  * @implements JSONValue
  * 
  * @author Hannah Cohn
@@ -19,28 +20,29 @@ public class JSONSymbolicConstant
   // +--------+----------------------------------------
   // | Fields |
   // +--------+
-  
+
   String contents;
-  
+
   // +--------------+----------------------------------------
   // | Constructors |
   // +--------------+
 
   /**
    * JSONSymbolicConstant constructor
+   * 
    * @param str
    */
   public JSONSymbolicConstant(String str)
   {
     this.contents = str;
   } // JSONSymbolicConstant
-  
+
   // +-----------------------+----------------------------------------
   // | Utility Class Methods |
   // +-----------------------+
 
   /**
-   * Returns type of JSONSymbolicConstant object
+   * Returns character representation of type of JSONSymbolicConstant object
    */
   @Override
   public char type()
@@ -57,17 +59,28 @@ public class JSONSymbolicConstant
     return contents;
   } // value()
 
-  
   /**
    * Given a JSON string return a JSONSymbolicConstant object.
+   * 
    * @param str
-   * @return 
-   * @throws Exception when str is not correct JSON syntax
+   * @return
+   * @throws Exception
+   *           when str is not correct JSON syntax
    */
-  public static JSONSymbolicConstant parseSymbolicConstant(Queue<Character> charQueue)
-    throws Exception
+  public static JSONSymbolicConstant
+    parseSymbolicConstant(Queue<Character> charQueue)
+      throws Exception
   {
-    // TODO Method Stub
-    return null;
+    // Make String
+    String val = "";
+    while (charQueue.peek() != null)
+      {
+        val += charQueue.poll();
+      } // while
+
+    return new JSONSymbolicConstant(val);
+
+    // return new JSONPair(strs[0], JSONUtils.parseValue(strs[1]));
+
   } // parseSymbolicConstant(String)
 } // JSONSymbolicConstant

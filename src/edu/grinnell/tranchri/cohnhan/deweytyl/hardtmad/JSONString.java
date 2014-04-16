@@ -40,7 +40,7 @@ public class JSONString
   // +-----------------------+
   
   /**
-   * Returns type of JSONString object
+   * Returns character representation of type of JSONString object
    */
   @Override
   public char type()
