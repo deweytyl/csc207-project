@@ -59,5 +59,9 @@ public interface JSONValue
    * @return obj the Java representation of the JSON value
    */
   public Object value();
+<<<<<<< HEAD
 
 }
+=======
+} // interface JSONValue
+>>>>>>> FETCH_HEAD
