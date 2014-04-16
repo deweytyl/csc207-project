@@ -1,5 +1,7 @@
 package edu.grinnell.tranchri.cohnhan.deweytyl.hardtmad;
 
+import java.util.Queue;
+
 public class JSONString
     implements
       JSONValue
@@ -21,6 +23,12 @@ public class JSONString
   public Object value()
   {
     return contents;
-  } // value()
-
+  } // value() 
+  
+  public static JSONString parseString(Queue<Character> charQueue)
+      throws Exception
+    {
+      // TODO Method Stub
+      return null;
+    } // parseString(String)
 } // class JSONString

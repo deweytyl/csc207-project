@@ -1,13 +1,19 @@
 package edu.grinnell.tranchri.cohnhan.deweytyl.hardtmad;
 
 import java.util.ArrayList;
+import java.util.Queue;
 
 public class JSONArray
     implements
       JSONValue
 {
+  public JSONArray(ArrayList<JSONValue> elts)
+  {
+    elements = elts;
+  } // JSONArray(ArrayList<JSONValue>)
+
   public ArrayList<JSONValue> elements;
-  
+
   @Override
   public char type()
   {
@@ -19,16 +25,11 @@ public class JSONArray
   {
     return elements.toArray();
   } // value()
-  
-  public static ArrayList<JSONValue> parseArray(String arrStr)
-  {
-    ArrayList<JSONValue> array = new ArrayList<JSONValue>();
-    String[] strs = (arrStr.substring(1, arrStr.length() - 1)).split(",");
-    for (String str : strs)
-      {
-        array.add(JSONUtils.parseValue(str));
-      } // for
 
-    return array;
+  public static JSONArray parseArray(Queue<Character> charQueue)
+    throws Exception
+  {
+    // TODO Method Stub
+    return null;
   } // parseArray(String)
 } // class JSONArray

@@ -2,6 +2,7 @@ package edu.grinnell.tranchri.cohnhan.deweytyl.hardtmad;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Queue;
 
 public class JSONObject
     implements
@@ -30,19 +31,11 @@ public class JSONObject
   // | Utility Class Methods |
   // +-----------------------+
   
-  public static JSONObject parseObject(String objectStr)
+  public static JSONObject parseObject(Queue<Character> charQueue)
+    throws Exception
   {
-    String[] pairStrs = (objectStr.substring(1, objectStr.length() - 1)).split(",");
-    
-    Map<String, JSONValue> map = new HashMap();
-    
-    for (String str : pairStrs)
-      {
-        JSONPair pair = JSONPair.parsePair(str);
-        map.put(pair.key, pair.value);
-      } // for
-    
-    return new JSONObject(map);
+    // TODO Method Stub
+    return null;
   } // parseObject(String)
   
   // +--------------------------+----------------------------------------
@@ -79,7 +72,7 @@ public class JSONObject
     // | Utility Class Methods |
     // +-----------------------+
     
-    public static JSONPair parsePair(String pairStr)
+    public static JSONPair parsePair(String pairStr) throws Exception
     {
       String[] strs = pairStr.split(":");
       return new JSONPair(strs[0], JSONUtils.parseValue(strs[1]));

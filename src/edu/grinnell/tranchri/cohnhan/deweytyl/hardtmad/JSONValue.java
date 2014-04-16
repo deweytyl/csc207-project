@@ -11,7 +11,19 @@ public interface JSONValue
    * JSONValue object based on this table: String: 's' Number: 'n' Object: 'o'
    * Array: 'a' Constant: 'c'
    */
-  public char type();
+
+  /**
+   * When looking at the JSONValue If the first character is: 
+   * { - it is an object 
+   * [ - it is an array 
+   * " - it is a string 
+   * t - it is a constant 
+   * f - it is a constant 
+   * n - it is a constant 
+   * - - it is a number 
+   * (any number 0-9) - it is a number
+   */
+  public char type (); 
 
   /**
    * Get the wrapped object
@@ -19,4 +31,5 @@ public interface JSONValue
    * @return obj the Java representation of the JSON value
    */
   public Object value();
+
 } // interface JSONValue
