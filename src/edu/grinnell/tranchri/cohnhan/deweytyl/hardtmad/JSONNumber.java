@@ -64,7 +64,7 @@ public class JSONNumber
    * Given a JSON string return a JSONNumber object.
    * 
    * @param str
-   * @return BigDecimal
+   * @return JSONNumber
    * @throws Exception
    *           when str is not correct JSON syntax
    */

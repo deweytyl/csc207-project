@@ -50,6 +50,7 @@ public class JSONParser
         case 'c':
           {
             String str = JSONUtils.getString(jValue);
+            // Handle symbolic constants
             if (str.equals("true"))
               return true;
             else if (str.equals("false"))
