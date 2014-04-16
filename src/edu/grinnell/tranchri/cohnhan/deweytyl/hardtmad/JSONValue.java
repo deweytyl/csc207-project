@@ -3,7 +3,13 @@ package edu.grinnell.tranchri.cohnhan.deweytyl.hardtmad;
 /**
  * An interface specifying a class which wraps a JSON type and Java object
  * representing a JSON value
+ * 
+ * @author Hannah Cohn
+ * @author Ty Dewey
+ * @author Madeleine Hardt
+ * @author Christine Tran
  */
+
 public interface JSONValue
 {
   /**

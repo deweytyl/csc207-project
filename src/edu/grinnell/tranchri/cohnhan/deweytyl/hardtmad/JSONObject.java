@@ -4,23 +4,47 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Queue;
 
+/**
+ * JSONObject Class
+ * @implements JSONValue
+ * 
+ * @author Hannah Cohn
+ * @author Ty Dewey
+ * @author Madeleine Hardt
+ * @author Christine Tran
+ */
+
 public class JSONObject
     implements
       JSONValue
 {
   public Map<String, JSONValue> members;
   
+  // +--------------+----------------------------------------
+  // | Constructors |
+  // +--------------+
+  
+  /**
+   * JSONObject Constructor
+   * @param m
+   */
   public JSONObject(Map<String, JSONValue> m)
   {
     members = m;
   } // JSONObject(Map)
   
+  /**
+   * Returns type of JSONObject object
+   */
   @Override
   public char type()
   {
     return 'o';
   } // type()
 
+  /**
+   * Returns value of JSONObject object
+   */
   @Override
   public Object value()
   {
@@ -31,6 +55,12 @@ public class JSONObject
   // | Utility Class Methods |
   // +-----------------------+
   
+  /**
+   * Given a JSON string return a JSONObject object.
+   * @param str
+   * @return 
+   * @throws Exception when str is not correct JSON syntax
+   */
   public static JSONObject parseObject(Queue<Character> charQueue)
     throws Exception
   {
@@ -41,7 +71,9 @@ public class JSONObject
   // +--------------------------+----------------------------------------
   // | Utility Class - JSONPair |
   // +--------------------------+
-  
+  /**
+   * Nested JSONPair Class
+   */
   static class JSONPair
   {
     // +--------+----------------------------------------
@@ -62,6 +94,11 @@ public class JSONObject
     // | Constructors |
     // +--------------+
     
+    /**
+     * JSONPair constructor
+     * @param str
+     * @param o
+     */
     public JSONPair(String str, JSONValue o)
     {
       key = str;
@@ -72,6 +109,12 @@ public class JSONObject
     // | Utility Class Methods |
     // +-----------------------+
     
+    /**
+     * Given a String return a JSONPair object.
+     * @param pairStr
+     * @return 
+     * @throws Exception when str is not correct JSON syntax
+     */
     public static JSONPair parsePair(String pairStr) throws Exception
     {
       String[] strs = pairStr.split(":");
