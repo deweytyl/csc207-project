@@ -62,7 +62,7 @@ public class JSONObject
   /**
    * Given a JSON string return a JSONObject object.
    * @param str
-   * @return 
+   * @return JSONObject
    * @throws Exception when str is not correct JSON syntax
    */
   public static JSONObject parseObject(Queue<Character> charQueue)

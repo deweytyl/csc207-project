@@ -61,7 +61,7 @@ public class JSONArray
   /**
    * Given a JSON string return a JSONArray object.
    * @param str
-   * @return 
+   * @return JSONArray
    * @throws Exception when str is not correct JSON syntax
    */
   public static JSONArray parseArray(Queue<Character> charQueue)
@@ -71,6 +71,7 @@ public class JSONArray
     ArrayList<JSONValue> val;
     while (charQueue.peek() != null)
       {
+        //recursively handle stuff in the array here...?
         //val.add(charQueue.poll());
       } // while
     
