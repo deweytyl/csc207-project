@@ -4,6 +4,7 @@ import java.util.Queue;
 
 /**
  * JSONString Class
+ * 
  * @implements JSONValue
  * 
  * @author Hannah Cohn
@@ -19,26 +20,27 @@ public class JSONString
   // +--------+----------------------------------------
   // | Fields |
   // +--------+
-  
+
   String contents;
-  
+
   // +--------------+----------------------------------------
   // | Constructors |
   // +--------------+
-  
+
   /**
    * JSONString constructor
+   * 
    * @param str
    */
   public JSONString(String str)
   {
     this.contents = str;
   } // JSONSring(String)
-  
+
   // +-----------------------+----------------------------------------
   // | Utility Class Methods |
   // +-----------------------+
-  
+
   /**
    * Returns character representation of type of JSONString object
    */
@@ -55,25 +57,64 @@ public class JSONString
   public Object value()
   {
     return contents;
-  } // value() 
-  
+  } // value()
+
   /**
    * Given a JSON string return a JSONString object.
+   * 
    * @param str
    * @return JSONString
-   * @throws Exception when str is not correct JSON syntax
+   * @throws Exception
+   *           when str is not correct JSON syntax
    */
   public static JSONString parseString(Queue<Character> charQueue)
-      throws Exception
-    {
-      // Make empty string
-      String val = "";
-      
-      while(charQueue.peek() != null)
-        {
-          val += charQueue.poll();
-        } // while
-      
-      return new JSONString(val);
-    } // parseString(String)
+    throws Exception
+  {
+    // Make empty string
+    StringBuilder val = new StringBuilder();
+
+    char ch = charQueue.poll(); // remove stringQuote
+    while ((ch = charQueue.poll()) != '\"')
+      {
+        if (ch == '\\')
+          {
+            switch (charQueue.peek())
+              {
+                case '\\':
+                case '\"':
+                case '/':
+                  val.append(charQueue.poll());
+                  break;
+                case 'b':
+                  charQueue.poll();
+                  val.append('\b');
+                  break;
+                case 'f':
+                  charQueue.poll();
+                  val.append('\f');
+                  break;
+                case 'n':
+                  charQueue.poll();
+                  val.append('\n');
+                  break;
+                case 'r':
+                  charQueue.poll();
+                  val.append('\r');
+                  break;
+                case 't':
+                  charQueue.poll();
+                  val.append('\t');
+                  break;
+                default:
+                  throw new Exception("Invalid Escape Character in String");
+              } // switch
+          } // if
+        else
+          {
+            val.append(ch);
+          }
+      } // while
+
+    return new JSONString(val.toString());
+  } // parseString(String)
 } // class JSONString
