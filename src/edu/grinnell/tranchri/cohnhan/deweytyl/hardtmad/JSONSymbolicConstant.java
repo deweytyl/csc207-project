@@ -63,7 +63,7 @@ public class JSONSymbolicConstant
    * Given a JSON string return a JSONSymbolicConstant object.
    * 
    * @param str
-   * @return
+   * @return JSONSymbolicConstant
    * @throws Exception
    *           when str is not correct JSON syntax
    */
