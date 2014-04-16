@@ -52,6 +52,12 @@ public class JSONUtils
     return null;
   } // getString(JSONValue)
 
+  /**
+   * Given a JSON string return a BigDecimal object.
+   * @param str
+   * @return BigDecimal
+   * @throws Exception when str is not correct JSON syntax
+   */
   public static BigDecimal parseNumber(String str)
     throws Exception
   {
@@ -60,10 +66,17 @@ public class JSONUtils
         parseE(str);
       } // if exp or frac exp
 
-    // Else the number is an int or frac (double)
+    // The number is an int or frac (double)
     return new BigDecimal(str);
   } // parseNumber(String)
 
+  /**
+   * Parse str around 'e' and find the value of #e# and return
+   * BigDecimal object with that value.
+   * @param str
+   * @return BigDecimal
+   * @throws Exception if incorrect JSON syntax
+   */
   public static BigDecimal parseE(String str)
     throws Exception
   {
