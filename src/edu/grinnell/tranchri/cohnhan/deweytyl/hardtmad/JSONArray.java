@@ -17,7 +17,7 @@ public class JSONArray
   @Override
   public Object value()
   {
-    return elements;
+    return elements.toArray();
   } // value()
   
   public static ArrayList<JSONValue> parseArray(String arrStr)

@@ -1,7 +1,6 @@
 package edu.grinnell.tranchri.cohnhan.deweytyl.hardtmad;
 
 import java.math.BigDecimal;
-import java.util.ArrayList;
 import java.util.Map;
 
 /**
@@ -51,25 +50,5 @@ public class JSONUtils
     // TODO Method Stub
     return null;
   } // getString(JSONValue)
-
-
-  static class JSONPair
-  {
-    /**
-     * A String representing the key of this key-value pair
-     */
-    String key;
-
-    /**
-     * The value of this key-value pair
-     */
-    JSONValue value;
-
-    public JSONPair(String str, JSONValue o)
-    {
-      key = str;
-      value = o;
-    } // JSONPair(String, JSONValue)
-  } // class JSONPair
 
 } // class JSONUtils
