@@ -17,7 +17,7 @@ public class JSONUtils
     // TODO Method Stub
     return null;
   } // parseValue(String)
-  
+
   public static ArrayList<Object> parseArray(String arrStr)
   {
     ArrayList<Object> array = new ArrayList<Object>();
@@ -26,13 +26,32 @@ public class JSONUtils
       {
         array.add(parseValue(str));
       } // for
-    
+
     return array;
   } // parseArray(String)
-  
+
+  /**
+   * To be added.
+   * 
+   * @param str
+   * @return BigDecimal
+   * @throws Exception
+   */
   public static BigDecimal parseNumber(String str)
+    throws Exception
   {
+    BigDecimal num = new BigDecimal(str);
+    
+    // Different cases:
+    // If the number is an integer, return an Integer object.
+    // Can return BigDecimal(str)
+    // int frac
+    // Can return BigDecimal(str)
+    // int exp
+    // Write parseE
+    // int frac exp
+    // Waiting on parseE
+
     return null;
   } // parseNumber(String)
-  
 } // class JSONUtils
