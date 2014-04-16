@@ -1,7 +1,6 @@
 package edu.grinnell.tranchri.cohnhan.deweytyl.hardtmad;
 
 import java.math.BigDecimal;
-import java.math.BigInteger;
 import java.util.Queue;
 
 /**
