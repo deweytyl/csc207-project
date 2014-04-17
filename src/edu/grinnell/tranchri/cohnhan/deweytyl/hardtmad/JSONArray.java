@@ -85,7 +85,7 @@ public class JSONArray
           } // if
         val.add(JSONUtils.parseValue(charQueue));
       } // while
-
+    
     return new JSONArray (val);
   } // parseArray(String)
 } // class JSONArray
