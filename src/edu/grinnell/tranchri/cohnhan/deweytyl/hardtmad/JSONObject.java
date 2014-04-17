@@ -88,7 +88,7 @@ public class JSONObject
         val.put(JSONPair.parsePair(charQueue).key,
                 JSONPair.parsePair(charQueue).value);
       } // while
-    // Remove end brace
+    // Remove end brace.
     return new JSONObject(val);
   } // parseObject(String)
 
