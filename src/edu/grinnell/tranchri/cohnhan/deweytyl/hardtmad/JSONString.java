@@ -65,9 +65,46 @@ public class JSONString
   @Override
   public String toJSONData()
   {
-    // TODO Auto-generated method stub
-    return null;
-  }
+    char ch;
+    StringBuilder str = new StringBuilder("\"");
+    for (int i = 0; i < this.contents.length(); i++)
+      {
+        ch = this.contents.charAt(i);
+
+        switch (ch)
+          {
+            case '\n':
+              str.append("\\n");
+              break;
+            case '\"':
+              str.append("\\\"");
+              break;
+            case '\\':
+              str.append("\\\\");
+              break;
+            case '/':
+              str.append("\\/");
+              break;
+            case '\b':
+              str.append("\\b");
+              break;
+            case '\f':
+              str.append("\\f");
+              break;
+            case '\r':
+              str.append("\\r");
+              break;
+            case '\t':
+              str.append("\\t");
+              break;
+            default:
+              str.append(ch);
+              break;
+          } // switch
+      } // for
+    str.append("\"");
+    return str.toString();
+  } //
 
   /**
    * Returns a Java String representation of a JSONString object
@@ -139,8 +176,8 @@ public class JSONString
                   charQueue.poll();
                   val.append('\t');
                   break;
-                  // Otherwise it is not a valid escape character,
-                  // throw an exception
+                // Otherwise it is not a valid escape character,
+                // throw an exception
                 default:
                   throw new Exception("Invalid Escape Character in String");
               } // switch
