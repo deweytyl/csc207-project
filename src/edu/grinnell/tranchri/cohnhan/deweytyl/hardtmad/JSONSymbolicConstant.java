@@ -73,8 +73,11 @@ public class JSONSymbolicConstant
   {
     // Make String
     String val = "";
+    
+    // Until there is nothing left to look at
     while (charQueue.peek() != null)
       {
+        // Add the character read to val
         val += charQueue.poll();
       } // while
 
