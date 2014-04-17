@@ -2,6 +2,7 @@ package edu.grinnell.tranchri.cohnhan.deweytyl.hardtmad;
 
 import java.math.BigDecimal;
 import java.util.ArrayDeque;
+import java.util.ArrayList;
 import java.util.Map;
 import java.util.Queue;
 
@@ -21,6 +22,10 @@ import java.util.Queue;
 
 public class JSONUtils
 {
+  // +-------------------+----------------------------------------
+  // | Parsing JSON Data |
+  // +-------------------+
+  
   /**
    * Converts str to Queue of Characters so it can be parsed by
    * parseValue(Queue<Character> charQueue)
@@ -90,6 +95,53 @@ public class JSONUtils
     throw new Exception("No Input");
   } // parseValue(String)
 
+  // +--------------------+----------------------------------------
+  // | Creating JSON Data |
+  // +--------------------+
+  
+  @SuppressWarnings("unchecked")
+  public static String JSONData(Object o)
+    throws Exception
+  {
+    if (o instanceof BigDecimal)
+      {
+        JSONNumber num = new JSONNumber((BigDecimal) o);
+        return num.toJSONData();
+      }
+    else if (o instanceof String)
+      {
+        JSONString str = new JSONString((String) o);
+        return str.toJSONData();
+      }
+    else if (o instanceof Boolean || o == null)
+      {
+        JSONSymbolicConstant c;
+        if (o != null)
+          {
+            c = new JSONSymbolicConstant(((Boolean) o).toString());
+          }
+        else 
+          {
+            c = new JSONSymbolicConstant("null");
+          }
+        return c.toJSONData();
+      }
+    else if (o instanceof ArrayList<?>)
+      {
+        JSONArray arr = new JSONArray((ArrayList<JSONValue>) o);
+        return arr.toJSONData();
+      }
+    else if (o instanceof Map<?,?>)
+      {
+        JSONObject obj = new JSONObject((Map<String, JSONValue>) o);
+        return obj.toJSONData();
+      }
+    else
+      {
+        throw new Exception("Unsupported Object type");
+      }
+  }
+  
   // +-----------------------+----------------------------------------
   // | Utility Class Methods |
   // +-----------------------+

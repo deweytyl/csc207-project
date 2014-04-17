@@ -60,6 +60,16 @@ public class JSONString
   } // value()
 
   /**
+   * Returns a JSON representation of this object in a String
+   */
+  @Override
+  public String toJSONData()
+  {
+    // TODO Auto-generated method stub
+    return null;
+  }
+
+  /**
    * Returns a Java String representation of a JSONString object
    */
   @Override
@@ -67,7 +77,7 @@ public class JSONString
   {
     return this.contents;
   } // toString()
-  
+
   /**
    * Given a JSON string return a JSONString object.
    * 

@@ -38,9 +38,9 @@ public class JSONNumber
     value = num;
   } // JSONNumber(BigInteger)
 
-  // +-----------------------+----------------------------------------
-  // | Utility Class Methods |
-  // +-----------------------+
+  // +---------+----------------------------------------
+  // | Methods |
+  // +---------+
 
   /**
    * Returns character representation of type of JSONNumber object
@@ -60,6 +60,16 @@ public class JSONNumber
     return this.value;
   } // value()
 
+  @Override
+  public String toJSONData()
+  {
+    return this.value.toString();
+  }
+  
+  // +-----------------------+----------------------------------------
+  // | Utility Class Methods |
+  // +-----------------------+
+  
   /**
    * Given a JSON string return a JSONNumber object.
    * 

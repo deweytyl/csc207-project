@@ -1,5 +1,6 @@
 package edu.grinnell.tranchri.cohnhan.deweytyl.hardtmad;
 
+import java.util.HashMap;
 import java.util.Map;
 import java.util.Queue;
 
@@ -60,6 +61,13 @@ public class JSONObject
     return members;
   } // value()
 
+  @Override
+  public String toJSONData()
+  {
+    // TODO Auto-generated method stub
+    return null;
+  }
+  
   // +-----------------------+----------------------------------------
   // | Utility Class Methods |
   // +-----------------------+
