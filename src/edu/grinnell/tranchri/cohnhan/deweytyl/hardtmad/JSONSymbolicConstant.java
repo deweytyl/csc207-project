@@ -37,9 +37,9 @@ public class JSONSymbolicConstant
     this.contents = str;
   } // JSONSymbolicConstant
 
-  // +-----------------------+----------------------------------------
-  // | Utility Class Methods |
-  // +-----------------------+
+  // +------------------+----------------------------------------
+  // | Instance Methods |
+  // +------------------+
 
   /**
    * Returns character representation of type of JSONSymbolicConstant object
@@ -59,6 +59,20 @@ public class JSONSymbolicConstant
     return contents;
   } // value()
 
+  /**
+   * Returns a JSON representation of this object in a String
+   */
+  @Override
+  public String toJSONData()
+  {
+    // TODO Auto-generated method stub
+    return null;
+  }
+  
+  // +-----------------------+----------------------------------------
+  // | Utility Class Methods |
+  // +-----------------------+
+  
   /**
    * Given a JSON string return a JSONSymbolicConstant object.
    * 

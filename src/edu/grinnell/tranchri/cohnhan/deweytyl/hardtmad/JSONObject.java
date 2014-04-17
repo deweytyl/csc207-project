@@ -61,6 +61,13 @@ public class JSONObject
     return members;
   } // value()
 
+  @Override
+  public String toJSONData()
+  {
+    // TODO Auto-generated method stub
+    return null;
+  }
+  
   // +-----------------------+----------------------------------------
   // | Utility Class Methods |
   // +-----------------------+

@@ -38,9 +38,9 @@ public class JSONArray
     elements = elts;
   } // JSONArray(ArrayList<JSONValue>)
 
-  // +-----------------------+----------------------------------------
-  // | Utility Class Methods |
-  // +-----------------------+
+  // +------------------+----------------------------------------
+  // | Instance Methods |
+  // +------------------+
 
   /**
    * Returns character representation of type of JSONArray object
@@ -60,6 +60,17 @@ public class JSONArray
     return elements.toArray();
   } // value()
 
+  @Override
+  public String toJSONData()
+  {
+    // TODO Auto-generated method stub
+    return null;
+  }
+  
+  // +-----------------------+----------------------------------------
+  // | Utility Class Methods |
+  // +-----------------------+
+  
   /**
    * Given a JSON string return a JSONArray object.
    * 
@@ -89,4 +100,5 @@ public class JSONArray
     charQueue.poll();
     return new JSONArray (val);
   } // parseArray(String)
+
 } // class JSONArray
