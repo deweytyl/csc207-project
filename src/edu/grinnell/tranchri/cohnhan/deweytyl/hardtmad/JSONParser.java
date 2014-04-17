@@ -41,7 +41,14 @@ public class JSONParser
   // +---------------+---------------------------------------
   // | Class Methods |
   // +---------------+
-
+  
+/**
+ * Given a JSON string returns the corresponding Java object.
+ * 
+ * @return Object
+ * @throws Exception
+ */
+  
   public Object JSONToJavaObject()
     throws Exception
   {
@@ -99,10 +106,11 @@ public class JSONParser
     // If the Object is a Pair (key-value pair)
     else if (javaObject instanceof Map.Entry)
       {
-        JSONParser parser = new JSONParser (((Map.Entry<String, Object>) javaObject).getValue());
+        JSONParser parser =
+            new JSONParser(((Map.Entry<String, Object>) javaObject).getValue());
         jString =
-            "\"" + ((Map.Entry<String, Object>) javaObject).getKey().toString() + "\" : "
-                + parser.JavaObjectToStringOfJSON();
+            "\"" + ((Map.Entry<String, Object>) javaObject).getKey().toString()
+                + "\" : " + parser.JavaObjectToStringOfJSON();
       } // else if
 
     // If the Object is an Array
@@ -113,8 +121,8 @@ public class JSONParser
         int i = 0;
         while ((instance = Array.get(javaObject, i)) != null)
           {
-            JSONParser parser = new JSONParser (instance);
-            jString +=  parser.JavaObjectToStringOfJSON();
+            JSONParser parser = new JSONParser(instance);
+            jString += parser.JavaObjectToStringOfJSON();
             i++;
           } // while
       } // else if
@@ -128,12 +136,14 @@ public class JSONParser
         Field field;
         while ((field = fields[i]) != null)
           {
-            JSONParser parser = new JSONParser (field.get(javaObject));
+            JSONParser parser = new JSONParser(field.get(javaObject));
             if (i != 0)
               {
                 jString += ", ";
               } // if
-            jString += "\"" + field.getName() + "\" : " + parser.JavaObjectToStringOfJSON();
+            jString +=
+                "\"" + field.getName() + "\" : "
+                    + parser.JavaObjectToStringOfJSON();
             i++;
           } // while
         jString += "}";
