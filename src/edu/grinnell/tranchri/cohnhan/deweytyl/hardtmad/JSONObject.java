@@ -84,6 +84,7 @@ public class JSONObject
             // Remove the comma
             charQueue.poll();
           } // if
+        // Deal with the pair
         val.put(JSONPair.parsePair(charQueue).key,
                 JSONPair.parsePair(charQueue).value);
       } // while
