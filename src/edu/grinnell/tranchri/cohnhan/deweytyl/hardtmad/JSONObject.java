@@ -19,6 +19,10 @@ public class JSONObject
     implements
       JSONValue
 {
+  // +--------+----------------------------------------
+  // | Fields |
+  // +--------+
+
   public Map<String, JSONValue> members;
 
   // +--------------+----------------------------------------
@@ -72,8 +76,19 @@ public class JSONObject
   public static JSONObject parseObject(Queue<Character> charQueue)
     throws Exception
   {
-    // TODO Method Stub
-    return null;
+    Map<String, JSONValue> val = new HashMap<String, JSONValue>();
+    while (charQueue.peek() != '}')
+      {
+        if (charQueue.peek() == ',')
+          {
+            // Remove the comma
+            charQueue.poll();
+          } // if
+        val.put(JSONPair.parsePair(charQueue).key,
+                JSONPair.parsePair(charQueue).value);
+      } // while
+    // Remove end brace
+    return new JSONObject(val);
   } // parseObject(String)
 
   // +--------------------------+----------------------------------------
