@@ -56,9 +56,18 @@ public class JSONString
   @Override
   public Object value()
   {
-    return contents;
+    return this.contents;
   } // value()
 
+  /**
+   * Returns a Java String representation of a JSONString object
+   */
+  @Override
+  public String toString()
+  {
+    return this.contents;
+  } // toString()
+  
   /**
    * Given a JSON string return a JSONString object.
    * 
