@@ -135,7 +135,7 @@ public class JSONObject
         {
           throw new Exception(
                               "Improper Object Format: improperly constructed pair");
-        } // ifg
+        } // if
       JSONPair pair =
           new JSONPair(key.toString(), JSONUtils.parseValue(charQueue));
       return pair;
