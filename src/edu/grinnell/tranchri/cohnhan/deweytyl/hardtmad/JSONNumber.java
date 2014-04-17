@@ -72,28 +72,30 @@ public class JSONNumber
     throws Exception
   {
     // Make String of number
-    String val = "";
-
-    while (charQueue.peek() != null)
+    StringBuilder baseStr = new StringBuilder();
+    Character ch;
+    while (((ch = charQueue.peek()) != 'e') ||
+           (ch != 'E') || (ch != ',') ||
+           (ch != ']') || (ch != '}') || (ch != null))
       {
-        // If String is of form "xEy"
-        // *********Is it lowercase e?
-        if (charQueue.peek() == 'E')
-          {
-            String exptStr = "";
-            while (charQueue.peek() != null)
-              {
-                exptStr += charQueue.poll();
-              } // while
-
-            BigDecimal base = new BigDecimal(val);
-            int expt = Integer.parseInt(exptStr);
-            return new JSONNumber(base.scaleByPowerOfTen(expt));
-          } // if
-        val += charQueue.poll();
+        baseStr.append(charQueue.poll());
       } // while
-
-    return new JSONNumber(new BigDecimal(val));
+    
+    BigDecimal base = new BigDecimal(baseStr.toString());
+    
+    if ((ch == 'e') || (ch == 'E'))
+      {
+        StringBuilder exptStr = new StringBuilder();
+        while (((ch = charQueue.peek()) != ',') ||
+           (ch != ']') || (ch != '}') || (ch != null))
+          {
+            exptStr.append(ch);
+          } // while
+        
+        int expt = Integer.parseInt(exptStr.toString());
+        return new JSONNumber(base.scaleByPowerOfTen(expt));
+      } // if number has an exponent
+    return new JSONNumber(base);
 
     // throw new Exception("Incorrect representation");
 
