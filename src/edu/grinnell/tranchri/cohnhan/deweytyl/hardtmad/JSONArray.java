@@ -75,9 +75,6 @@ public class JSONArray
     ArrayList<JSONValue> val = new ArrayList<JSONValue>();
     while (charQueue.peek() != ']')
       {
-      //****Not sure if this is the right place to check
-      //    for commas because I'm not sure how parseValue
-      //    will handle the comma...will it crash?
         if (charQueue.peek() == ',')
           {
             // Remove the comma

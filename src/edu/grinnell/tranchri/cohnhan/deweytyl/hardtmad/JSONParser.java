@@ -1,5 +1,10 @@
 package edu.grinnell.tranchri.cohnhan.deweytyl.hardtmad;
 
+import java.lang.reflect.Array;
+import java.lang.reflect.Field;
+import java.math.BigDecimal;
+import java.util.Map;
+
 /**
  * JSONParser Class
  * 
@@ -17,6 +22,7 @@ public class JSONParser
 
   String jString;
   JSONValue jValue;
+  Object javaObject;
 
   // +--------------+----------------------------------------
   // | Constructors |
@@ -27,9 +33,9 @@ public class JSONParser
     jString = input;
   } // JSONParser (String)
 
-  public JSONParser(JSONValue obj)
+  public JSONParser(Object obj)
   {
-    jValue = obj;
+    javaObject = obj;
   } // JSONParser (JSONValue)
 
   // +---------------+---------------------------------------
@@ -68,11 +74,72 @@ public class JSONParser
 
   } // JSONToJavaObject()
 
+  @SuppressWarnings("unchecked")
   public String JavaObjectToStringOfJSON()
     throws Exception
   {
-    
+    // If the Object is a number
+    if (javaObject instanceof BigDecimal)
+      {
+        jString = javaObject.toString();
+      } // if
+
+    // If the Object is a String
+    else if (javaObject instanceof java.lang.String)
+      {
+        jString = "\"" + javaObject.toString() + "\"";
+      } // else if
+
+    // If the Object is a symbolic constant
+    else if (javaObject instanceof Boolean || javaObject == null)
+      {
+        jString = javaObject.toString();
+      } // else if
+
+    // If the Object is a Pair (key-value pair)
+    else if (javaObject instanceof Map.Entry)
+      {
+        JSONParser parser = new JSONParser (((Map.Entry<String, Object>) javaObject).getValue());
+        jString =
+            "\"" + ((Map.Entry<String, Object>) javaObject).getKey().toString() + "\" : "
+                + parser.JavaObjectToStringOfJSON();
+      } // else if
+
+    // If the Object is an Array
+    else if (javaObject instanceof Array)
+      {
+        jString = "";
+        Object instance;
+        int i = 0;
+        while ((instance = Array.get(javaObject, i)) != null)
+          {
+            JSONParser parser = new JSONParser (instance);
+            jString +=  parser.JavaObjectToStringOfJSON();
+            i++;
+          } // while
+      } // else if
+
+    // If the Object is any other type
+    else
+      {
+        jString = "{";
+        int i = 0;
+        Field[] fields = javaObject.getClass().getFields();
+        Field field;
+        while ((field = fields[i]) != null)
+          {
+            JSONParser parser = new JSONParser (field.get(javaObject));
+            if (i != 0)
+              {
+                jString += ", ";
+              } // if
+            jString += "\"" + field.getName() + "\" : " + parser.JavaObjectToStringOfJSON();
+            i++;
+          } // while
+        jString += "}";
+      } // else
+
     return jString;
   } // JavaObjectToStringOfJSON()
 
-}
+} // class JSONParser
