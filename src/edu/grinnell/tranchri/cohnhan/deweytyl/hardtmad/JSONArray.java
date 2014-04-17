@@ -5,6 +5,7 @@ import java.util.Queue;
 
 /**
  * JSONArray Class
+ * 
  * @implements JSONValue
  * 
  * @author Hannah Cohn
@@ -20,22 +21,23 @@ public class JSONArray
   // +--------+----------------------------------------
   // | Fields |
   // +--------+
-  
+
   public ArrayList<JSONValue> elements;
-  
+
   // +--------------+----------------------------------------
   // | Constructors |
   // +--------------+
-  
+
   /**
    * JSONArray Constructor
+   * 
    * @param elts
    */
   public JSONArray(ArrayList<JSONValue> elts)
   {
     elements = elts;
   } // JSONArray(ArrayList<JSONValue>)
-  
+
   // +-----------------------+----------------------------------------
   // | Utility Class Methods |
   // +-----------------------+
@@ -48,7 +50,7 @@ public class JSONArray
   {
     return 'c';
   } // type()
-  
+
   /**
    * Returns value of JSONArray object
    */
@@ -60,24 +62,30 @@ public class JSONArray
 
   /**
    * Given a JSON string return a JSONArray object.
+   * 
    * @param str
    * @return JSONArray
-   * @throws Exception when str is not correct JSON syntax
+   * @throws Exception
+   *           when str is not correct JSON syntax
    */
   public static JSONArray parseArray(Queue<Character> charQueue)
     throws Exception
   {
- // Make String
-    ArrayList<JSONValue> val;
-    while (charQueue.peek() != null)
+    // Make ArrayList of JSONValues
+    ArrayList<JSONValue> val = new ArrayList<JSONValue>();
+    while (charQueue.peek() != ']')
       {
-        //recursively handle stuff in the array here...?
-        //val.add(charQueue.poll());
+      //****Not sure if this is the right place to check
+      //    for commas because I'm not sure how parseValue
+      //    will handle the comma...will it crash?
+        if (charQueue.peek() != ',')
+          {
+            // Remove the comma
+            charQueue.poll();
+          } // if
+        val.add(JSONUtils.parseValue(charQueue));
       } // while
-    
-    //return new JSONArray (val);
-    
-    return null;
 
+    return new JSONArray (val);
   } // parseArray(String)
 } // class JSONArray
