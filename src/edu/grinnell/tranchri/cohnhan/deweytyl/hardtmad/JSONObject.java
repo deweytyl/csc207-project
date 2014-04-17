@@ -129,12 +129,13 @@ public class JSONObject
     public static JSONPair parsePair(Queue<Character> charQueue)
       throws Exception
     {
+      // Deal with key
       JSONString key = JSONString.parseString(charQueue);
       if (charQueue.poll() != ':')
         {
           throw new Exception(
                               "Improper Object Format: improperly constructed pair");
-        }
+        } // ifg
       JSONPair pair =
           new JSONPair(key.toString(), JSONUtils.parseValue(charQueue));
       return pair;
