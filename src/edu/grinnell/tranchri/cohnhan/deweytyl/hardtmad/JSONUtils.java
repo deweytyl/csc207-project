@@ -61,7 +61,7 @@ public class JSONUtils
     if (ch != null)
       {
      // valStr is a number
-        if (Character.isDigit(ch))
+        if (Character.isDigit(ch) || ch == '.' || ch == '-')
           {
             return JSONNumber.parseNumber(charQueue);
           }
