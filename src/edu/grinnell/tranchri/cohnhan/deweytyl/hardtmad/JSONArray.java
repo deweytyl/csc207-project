@@ -78,14 +78,15 @@ public class JSONArray
       //****Not sure if this is the right place to check
       //    for commas because I'm not sure how parseValue
       //    will handle the comma...will it crash?
-        if (charQueue.peek() != ',')
+        if (charQueue.peek() == ',')
           {
             // Remove the comma
             charQueue.poll();
           } // if
         val.add(JSONUtils.parseValue(charQueue));
       } // while
-    
+    // Remove end brace.
+    charQueue.poll();
     return new JSONArray (val);
   } // parseArray(String)
 } // class JSONArray
