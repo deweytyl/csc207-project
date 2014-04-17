@@ -63,8 +63,19 @@ public class JSONArray
   @Override
   public String toJSONData()
   {
-    // TODO Auto-generated method stub
-    return null;
+    StringBuilder data = new StringBuilder("[");
+    if (this.elements.size() == 0)
+      {
+        data.append('}');
+        return data.toString();
+      } // if
+    
+    for (JSONValue element : elements)
+      {
+        data.append(element.toJSONData() + ",");
+      } // for
+    data.setCharAt(data.length(), ']');
+    return data.toString();
   }
   
   // +-----------------------+----------------------------------------

@@ -3,6 +3,7 @@ package edu.grinnell.tranchri.cohnhan.deweytyl.hardtmad;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Queue;
+import java.util.Set;
 
 /**
  * JSONObject Class
@@ -64,8 +65,20 @@ public class JSONObject
   @Override
   public String toJSONData()
   {
-    // TODO Auto-generated method stub
-    return null;
+    StringBuilder data = new StringBuilder("{");
+    Set<Map.Entry<String,JSONValue>> entrySet = this.members.entrySet();
+    if (entrySet == null)
+      {
+        data.append("}");
+        return data.toString();
+      }
+    
+    for (Map.Entry<String,JSONValue> pair : entrySet)
+      {
+        data.append(pair.getKey() + ":" + pair.getValue().toJSONData() + ",");
+      }
+    data.setCharAt(data.length(), '}');
+    return data.toString();
   }
   
   // +-----------------------+----------------------------------------

@@ -56,7 +56,7 @@ public class JSONSymbolicConstant
   @Override
   public Object value()
   {
-    return contents;
+    return this.contents;
   } // value()
 
   /**
@@ -65,8 +65,7 @@ public class JSONSymbolicConstant
   @Override
   public String toJSONData()
   {
-    // TODO Auto-generated method stub
-    return null;
+    return this.contents;
   }
   
   // +-----------------------+----------------------------------------
