@@ -67,7 +67,7 @@ public class JSONString
   {
     return this.contents;
   } // toString()
-  
+
   /**
    * Given a JSON string return a JSONString object.
    * 
@@ -82,9 +82,12 @@ public class JSONString
     // Make empty string
     StringBuilder val = new StringBuilder();
 
-    char ch = charQueue.poll(); // remove stringQuote
+    char ch = charQueue.poll();
+
+    // Until we hit the end of the string
     while ((ch = charQueue.poll()) != '\"')
       {
+        // Handle escape characters
         if (ch == '\\')
           {
             switch (charQueue.peek())
@@ -92,34 +95,49 @@ public class JSONString
                 case '\\':
                 case '\"':
                 case '/':
+                  // if character immediately following \ is
+                  // \,", or / add it to val
                   val.append(charQueue.poll());
                   break;
                 case 'b':
+                  // Remove b from queue and add the escape
+                  // character \b to val
                   charQueue.poll();
                   val.append('\b');
                   break;
                 case 'f':
+                  // Remove f from queue and add the escape
+                  // character \f to val
                   charQueue.poll();
                   val.append('\f');
                   break;
                 case 'n':
+                  // Remove n from queue and add the escape
+                  // character \n to val
                   charQueue.poll();
                   val.append('\n');
                   break;
                 case 'r':
+                  // Remove r from queue and add the escape
+                  // character \r to val
                   charQueue.poll();
                   val.append('\r');
                   break;
                 case 't':
+                  // Remove t from queue and add the escape
+                  // character \t to val
                   charQueue.poll();
                   val.append('\t');
                   break;
+                  // Otherwise it is not a valid escape character,
+                  // throw an exception
                 default:
                   throw new Exception("Invalid Escape Character in String");
               } // switch
           } // if
         else
           {
+            // If not an escape character, add to val
             val.append(ch);
           }
       } // while
