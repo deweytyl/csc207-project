@@ -6,6 +6,7 @@ import java.util.Queue;
 
 /**
  * JSONObject Class
+ * 
  * @implements JSONValue
  * 
  * @author Hannah Cohn
@@ -19,24 +20,25 @@ public class JSONObject
       JSONValue
 {
   public Map<String, JSONValue> members;
-  
+
   // +--------------+----------------------------------------
   // | Constructors |
   // +--------------+
-  
+
   /**
    * JSONObject Constructor
+   * 
    * @param m
    */
   public JSONObject(Map<String, JSONValue> m)
   {
     members = m;
   } // JSONObject(Map)
-  
-  //+---------+-------------------------------------------------
- // | Methods |
- // +---------+
-  
+
+  // +---------+-------------------------------------------------
+  // | Methods |
+  // +---------+
+
   /**
    * Returns character representation of type of JSONObject object
    */
@@ -58,12 +60,14 @@ public class JSONObject
   // +-----------------------+----------------------------------------
   // | Utility Class Methods |
   // +-----------------------+
-  
+
   /**
    * Given a JSON string return a JSONObject object.
+   * 
    * @param str
    * @return JSONObject
-   * @throws Exception when str is not correct JSON syntax
+   * @throws Exception
+   *           when str is not correct JSON syntax
    */
   public static JSONObject parseObject(Queue<Character> charQueue)
     throws Exception
@@ -71,7 +75,7 @@ public class JSONObject
     // TODO Method Stub
     return null;
   } // parseObject(String)
-  
+
   // +--------------------------+----------------------------------------
   // | Utility Class - JSONPair |
   // +--------------------------+
@@ -83,7 +87,7 @@ public class JSONObject
     // +--------+----------------------------------------
     // | Fields |
     // +--------+
-    
+
     /**
      * A String representing the key of this key-value pair
      */
@@ -97,9 +101,10 @@ public class JSONObject
     // +--------------+----------------------------------------
     // | Constructors |
     // +--------------+
-    
+
     /**
      * JSONPair constructor
+     * 
      * @param str
      * @param o
      */
@@ -108,18 +113,21 @@ public class JSONObject
       key = str;
       value = o;
     } // JSONPair(String, JSONValue)
-    
+
     // +-----------------------+----------------------------------------
     // | Utility Class Methods |
     // +-----------------------+
-    
+
     /**
      * Given a String return a JSONPair object.
+     * 
      * @param pairStr
-     * @return 
-     * @throws Exception when str is not correct JSON syntax
+     * @return JSONPair
+     * @throws Exception
+     *           when str is not correct JSON syntax
      */
-    public static JSONPair parsePair(String pairStr) throws Exception
+    public static JSONPair parsePair(String pairStr)
+      throws Exception
     {
       String[] strs = pairStr.split(":");
       return new JSONPair(strs[0], JSONUtils.parseValue(strs[1]));
