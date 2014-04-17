@@ -108,10 +108,10 @@ public class JSONObject
      * @param str
      * @param o
      */
-    public JSONPair(String str, JSONValue o)
+    public JSONPair(String str, JSONValue v)
     {
       key = str;
-      value = o;
+      value = v;
     } // JSONPair(String, JSONValue)
 
     // +-----------------------+----------------------------------------
@@ -126,11 +126,18 @@ public class JSONObject
      * @throws Exception
      *           when str is not correct JSON syntax
      */
-    public static JSONPair parsePair(String pairStr)
+    public static JSONPair parsePair(Queue<Character> charQueue)
       throws Exception
     {
-      String[] strs = pairStr.split(":");
-      return new JSONPair(strs[0], JSONUtils.parseValue(strs[1]));
+      JSONString key = JSONString.parseString(charQueue);
+      if (charQueue.poll() != ':')
+        {
+          throw new Exception(
+                              "Improper Object Format: improperly constructed pair");
+        }
+      JSONPair pair =
+          new JSONPair(key.toString(), JSONUtils.parseValue(charQueue));
+      return pair;
     } // parsePair(String pairStr)
   } // class JSONPair
 
