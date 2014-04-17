@@ -51,6 +51,7 @@ public class JSONUtils
    */
   // ************Does this work for an empty queue?
   // It throws an exception if its empty right?
+  // ****Can we handle commas here?
   public static JSONValue parseValue(Queue<Character> charQueue)
     throws Exception
   {
