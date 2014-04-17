@@ -78,36 +78,43 @@ public class JSONNumber
    * @throws Exception
    *           when str is not correct JSON syntax
    */
+  @SuppressWarnings("null")
   public static JSONNumber parseNumber(Queue<Character> charQueue)
     throws Exception
   {
-    // Make String of number
+    // Make StringBuilder of number which will store the number
     StringBuilder baseStr = new StringBuilder();
     Character ch;
+    // Until we hit a terminating character
     while (((ch = charQueue.peek()) != 'e') ||
            (ch != 'E') || (ch != ',') ||
            (ch != ']') || (ch != '}') || (ch != null))
       {
+        // Add onto baseStr
         baseStr.append(charQueue.poll());
       } // while
     
+    // Make new BigDecimal of the number obtained from JSON
     BigDecimal base = new BigDecimal(baseStr.toString());
     
+    // Handle exponents
     if ((ch == 'e') || (ch == 'E'))
       {
+        // Make StringBuilder to hold the exponent value
         StringBuilder exptStr = new StringBuilder();
+        // Until we hit a terminating character
         while (((ch = charQueue.peek()) != ',') ||
            (ch != ']') || (ch != '}') || (ch != null))
           {
+            // Add onto final exponent number
             exptStr.append(ch);
           } // while
-        
+        // Make exptStr into an Integer
         int expt = Integer.parseInt(exptStr.toString());
+        // Get the exponent value
         return new JSONNumber(base.scaleByPowerOfTen(expt));
       } // if number has an exponent
     return new JSONNumber(base);
-
-    // throw new Exception("Incorrect representation");
 
   } // parseNumber(String)
 } // class JSONNumber

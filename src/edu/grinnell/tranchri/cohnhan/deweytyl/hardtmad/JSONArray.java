@@ -31,7 +31,7 @@ public class JSONArray
   /**
    * JSONArray Constructor
    * 
-   * @param elts
+   * @param elts, an ArrayList of JSONValues
    */
   public JSONArray(ArrayList<JSONValue> elts)
   {
@@ -84,13 +84,16 @@ public class JSONArray
   {
     // Make ArrayList of JSONValues
     ArrayList<JSONValue> val = new ArrayList<JSONValue>();
+    // Until we hit the end of the array...
     while (charQueue.peek() != ']')
       {
+      // Check to see if the next character is a comma
         if (charQueue.peek() == ',')
           {
             // Remove the comma
             charQueue.poll();
           } // if
+        // Parse the values in the array and add to valg
         val.add(JSONUtils.parseValue(charQueue));
       } // while
     // Remove end brace.

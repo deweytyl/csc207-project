@@ -34,16 +34,21 @@ public class JSONUtils
    * @return JSONValue of appropriate type
    * @throws Exception
    */
-  // ************Does this work for the empty string?
+
   public static JSONValue parseValue(String str)
     throws Exception
   {
+    // Take str and turn into a character array and then use that
+    // to make a queue with the characters
     char[] charArray = str.toCharArray();
     Queue<Character> charQueue = new ArrayDeque<Character>(charArray.length);
+    
+    // Put every character in the array into the queue
     for (Character ch : charArray)
       {
         charQueue.add(ch);
       } // for
+    
     return parseValue(charQueue);
   } // parseValue(String)
 
@@ -54,9 +59,7 @@ public class JSONUtils
    * @return JSONValue of appropriate type
    * @throws Exception
    */
-  // ************Does this work for an empty queue?
-  // It throws an exception if its empty right?
-  // ****Can we handle commas here?
+
   public static JSONValue parseValue(Queue<Character> charQueue)
     throws Exception
   {
@@ -66,10 +69,12 @@ public class JSONUtils
     if (ch != null)
       {
      // valStr is a number
-        if (Character.isDigit(ch))
+        if (Character.isDigit(ch) || ch == '.' || ch == '-')
           {
             return JSONNumber.parseNumber(charQueue);
-          }
+          } // if
+        // Otherwise it is not a number, figure out what other
+        // JSON value it is and parse accordingly
         switch (ch)
           {
           // valStr is a string or a pair

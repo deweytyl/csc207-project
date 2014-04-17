@@ -83,9 +83,14 @@ public class JSONObject
   public static JSONObject parseObject(Queue<Character> charQueue)
     throws Exception
   {
+    // Build Map to hold key, value pairs obtained from JSON string
+    // retrieved
     Map<String, JSONValue> val = new HashMap<String, JSONValue>();
+
+    // Until we are at the end of the object
     while (charQueue.peek() != '}')
       {
+        // Check to see if there is a comma, ignore it
         if (charQueue.peek() == ',')
           {
             // Remove the comma
@@ -154,11 +159,14 @@ public class JSONObject
     {
       // Deal with key
       JSONString key = JSONString.parseString(charQueue);
+      // If the pair does not contain a colon then it is not
+      // valid and throw an exception
       if (charQueue.poll() != ':')
         {
           throw new Exception(
                               "Improper Object Format: improperly constructed pair");
         } // if
+      // Make JSONPair object with key and valueg
       JSONPair pair =
           new JSONPair(key.toString(), JSONUtils.parseValue(charQueue));
       return pair;
