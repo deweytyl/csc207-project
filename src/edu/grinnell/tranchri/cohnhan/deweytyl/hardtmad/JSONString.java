@@ -118,17 +118,18 @@ public class JSONString
   /**
    * Given a JSON string return a JSONString object.
    * 
-   * @param str
+   * @param charQueue
    * @return JSONString
    * @throws Exception
-   *           when str is not correct JSON syntax
+   *           when not correct JSON syntax
    */
   public static JSONString parseString(Queue<Character> charQueue)
     throws Exception
   {
     // Make empty string
     StringBuilder val = new StringBuilder();
-
+    
+    // Take off starting "
     char ch = charQueue.poll();
 
     // Until we hit the end of the string
@@ -176,6 +177,21 @@ public class JSONString
                   charQueue.poll();
                   val.append('\t');
                   break;
+                case 'u':
+                  // Get the \ and throw it away
+                  // Or throw an exception if \ does not exist
+                  if(charQueue.poll() != '\\')
+                    {
+                      throw new Exception("Not proper unicode representation.");
+                    } // if
+   
+                  ch = charQueue.poll();
+                  String str = new String();
+                  while (Character.isDigit(ch) || Character.isLetter(ch))
+                    {
+                      str += ch;
+                    } // while
+                  val.append((char) Integer.parseInt(str));
                 // Otherwise it is not a valid escape character,
                 // throw an exception
                 default:
@@ -188,6 +204,9 @@ public class JSONString
             val.append(ch);
           }
       } // while
+    
+    // Remove ending "
+    charQueue.poll();
 
     return new JSONString(val.toString());
   } // parseString(String)
