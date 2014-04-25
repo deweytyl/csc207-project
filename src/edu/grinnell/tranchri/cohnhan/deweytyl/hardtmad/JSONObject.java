@@ -162,18 +162,20 @@ public class JSONObject
     /**
      * Given a String return a JSONPair object.
      * 
-     * @param pairStr
+     * @param charQueue
      * @return JSONPair
      * @throws Exception
-     *           when str is not correct JSON syntax
+     *           when not correct JSON syntax
      */
     public static JSONPair parsePair(Queue<Character> charQueue)
       throws Exception
     {
-      // Deal with key
+      // Get {
+      charQueue.poll();
       JSONString key = JSONString.parseString(charQueue);
       // If the pair does not contain a colon then it is not
       // valid and throw an exception
+      // ****** parseString takes off the colon.
       if (charQueue.poll() != ':')
         {
           throw new Exception("Improper Object Format: improperly constructed pair");
