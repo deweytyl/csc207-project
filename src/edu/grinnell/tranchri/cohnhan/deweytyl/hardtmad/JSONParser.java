@@ -75,7 +75,7 @@ public class JSONParser
   } // JSONToJavaObject()
 
   @SuppressWarnings("unchecked")
-  public String JavaObjectToStringOfJSON(Object o)
+  public String JavaObjectToStringOfJSON()
     throws Exception
   {
      // If the Object is a number
@@ -143,13 +143,13 @@ public class JSONParser
      } // else
 
      // If the Object is a number
-     if (o instanceof BigDecimal)
+     if (this.javaObject instanceof BigDecimal)
      {
-     jString = ((BigDecimal) o).toString();
+     jString = ((BigDecimal) this.javaObject).toString();
      } // if
     
      // If the Object is a String
-     else if (o instanceof String)
+     else if (this.javaObject instanceof String)
      {
      // TODO SubMethod Stub
      } // else if
