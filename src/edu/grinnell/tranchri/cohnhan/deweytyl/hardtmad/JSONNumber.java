@@ -86,8 +86,8 @@ public class JSONNumber
     StringBuilder baseStr = new StringBuilder();
     Character ch;
     // Until we hit a terminating character
-    while (((ch = charQueue.peek()) != null)
-           && ((ch != 'E') || (ch != ',') || (ch != ']') || (ch != '}') || (ch != 'e')))
+    while (((ch = charQueue.peek()) != null) && (ch != 'E') && (ch != ',')
+           && (ch != ']') && (ch != '}') && (ch != 'e'))
       {
         // Add onto baseStr
         baseStr.append(charQueue.poll());
@@ -102,8 +102,8 @@ public class JSONNumber
         // Make StringBuilder to hold the exponent value
         StringBuilder exptStr = new StringBuilder();
         // Until we hit a terminating character
-        while (((ch = charQueue.peek()) != null)
-               && ((ch != ']') || (ch != '}') || (ch != ',')))
+        while (((ch = charQueue.peek()) != null) && (ch != ']') && (ch != '}')
+               && (ch != ','))
           {
             // Add onto final exponent number
             exptStr.append(ch);
