@@ -31,7 +31,8 @@ public class JSONArray
   /**
    * JSONArray Constructor
    * 
-   * @param elts, an ArrayList of JSONValues
+   * @param elts
+   *          , an ArrayList of JSONValues
    */
   public JSONArray(ArrayList<JSONValue> elts)
   {
@@ -69,19 +70,19 @@ public class JSONArray
         data.append('}');
         return data.toString();
       } // if
-    
+
     for (JSONValue element : elements)
       {
         data.append(element.toJSONData() + ",");
       } // for
-    data.setCharAt(data.length(), ']');
+    data.setCharAt(data.length()-1, ']');
     return data.toString();
   }
-  
+
   // +-----------------------+----------------------------------------
   // | Utility Class Methods |
   // +-----------------------+
-  
+
   /**
    * Given a JSON string return a JSONArray object.
    * 
@@ -95,21 +96,32 @@ public class JSONArray
   {
     // Make ArrayList of JSONValues
     ArrayList<JSONValue> val = new ArrayList<JSONValue>();
-    // Until we hit the end of the array...
-    while (charQueue.peek() != ']')
-      {
-      // Check to see if the next character is a comma
-        if (charQueue.peek() == ',')
-          {
-            // Remove the comma
-            charQueue.poll();
-          } // if
-        // Parse the values in the array and add to valg
-        val.add(JSONUtils.parseValue(charQueue));
-      } // while
-    // Remove end brace.
+
+    @SuppressWarnings("unused")
+    Character ch;
+
+    // remove opening brace
     charQueue.poll();
-    return new JSONArray (val);
+    
+    // Until we hit the end of the array...
+    while ((ch = charQueue.peek()) != ']')
+      {
+        // Check to see if the next character is a comma
+        if (ch == ',')
+          {
+            charQueue.poll();
+          }// If ch is a comma
+        else
+          {
+            val.add(JSONUtils.parseValue(charQueue));
+          } // If it isn't, parse the values in the array and add to val
+    
+      } // while not at the end of the array
+    
+    // remove final brace
+    charQueue.poll();
+    
+    return new JSONArray(val);
   } // parseArray(String)
 
 } // class JSONArray
