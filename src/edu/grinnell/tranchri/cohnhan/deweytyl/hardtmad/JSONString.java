@@ -14,8 +14,7 @@ import java.util.Queue;
  */
 
 public class JSONString
-    implements
-      JSONValue
+    implements JSONValue
 {
   // +--------+----------------------------------------
   // | Fields |
@@ -128,7 +127,7 @@ public class JSONString
   {
     // Make empty string
     StringBuilder val = new StringBuilder();
-    
+
     // Take off starting "
     char ch = charQueue.poll();
 
@@ -178,13 +177,10 @@ public class JSONString
                   val.append('\t');
                   break;
                 case 'u':
-                  // Get the \ and throw it away
-                  // Or throw an exception if \ does not exist
-                  if(charQueue.poll() != '\\')
-                    {
-                      throw new Exception("Not proper unicode representation.");
-                    } // if
-   
+                  // Get the \ and u and throw it away
+                  charQueue.poll();
+                  charQueue.poll();
+                  
                   ch = charQueue.poll();
                   String str = new String();
                   while (Character.isDigit(ch) || Character.isLetter(ch))
@@ -204,7 +200,7 @@ public class JSONString
             val.append(ch);
           }
       } // while
-    
+
     // Remove ending "
     charQueue.poll();
 
