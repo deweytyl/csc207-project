@@ -66,21 +66,21 @@ public class JSONObject
   public String toJSONData()
   {
     StringBuilder data = new StringBuilder("{");
-    Set<Map.Entry<String,JSONValue>> entrySet = this.members.entrySet();
+    Set<Map.Entry<String, JSONValue>> entrySet = this.members.entrySet();
     if (entrySet == null)
       {
         data.append("}");
         return data.toString();
       }
-    
-    for (Map.Entry<String,JSONValue> pair : entrySet)
+
+    for (Map.Entry<String, JSONValue> pair : entrySet)
       {
         data.append(pair.getKey() + ":" + pair.getValue().toJSONData() + ",");
       }
     data.setCharAt(data.length(), '}');
     return data.toString();
   }
-  
+
   // +-----------------------+----------------------------------------
   // | Utility Class Methods |
   // +-----------------------+
@@ -176,10 +176,9 @@ public class JSONObject
       // valid and throw an exception
       if (charQueue.poll() != ':')
         {
-          throw new Exception(
-                              "Improper Object Format: improperly constructed pair");
+          throw new Exception("Improper Object Format: improperly constructed pair");
         } // if
-      // Make JSONPair object with key and valueg
+      // Make JSONPair object with key and value
       JSONPair pair =
           new JSONPair(key.toString(), JSONUtils.parseValue(charQueue));
       return pair;
