@@ -78,133 +78,133 @@ public class JSONParser
   public String JavaObjectToStringOfJSON(Object o)
     throws Exception
   {
-    // // If the Object is a number
-    // if (javaObject instanceof BigDecimal)
-    // {
-    // jString = javaObject.toString();
-    // } // if
-    //
-    // // If the Object is a String
-    // else if (javaObject instanceof java.lang.String)
-    // {
-    // jString = "\"" + javaObject.toString() + "\"";
-    // } // else if
-    //
-    // // If the Object is a symbolic constant
-    // else if (javaObject instanceof Boolean || javaObject == null)
-    // {
-    // jString = javaObject.toString();
-    // } // else if
-    //
-    // // If the Object is a Pair (key-value pair)
-    // else if (javaObject instanceof Map.Entry)
-    // {
-    // JSONParser parser =
-    // new JSONParser(((Map.Entry<String, Object>) javaObject).getValue());
-    // jString =
-    // "\"" + ((Map.Entry<String, Object>) javaObject).getKey().toString()
-    // + "\" : " + parser.JavaObjectToStringOfJSON();
-    // } // else if
-    //
-    // // If the Object is an Array
-    // else if (javaObject instanceof Array)
-    // {
-    // jString = "";
-    // Object instance;
-    // int i = 0;
-    // while ((instance = Array.get(javaObject, i)) != null)
-    // {
-    // JSONParser parser = new JSONParser(instance);
-    // jString += parser.JavaObjectToStringOfJSON();
-    // i++;
-    // } // while
-    // } // else if
-    //
-    // // If the Object is any other type
-    // else
-    // {
-    // jString = "{";
-    // int i = 0;
-    // Field[] fields = javaObject.getClass().getFields();
-    // Field field;
-    // while ((field = fields[i]) != null)
-    // {
-    // JSONParser parser = new JSONParser(field.get(javaObject));
-    // if (i != 0)
-    // {
-    // jString += ", ";
-    // } // if
-    // jString +=
-    // "\"" + field.getName() + "\" : "
-    // + parser.JavaObjectToStringOfJSON();
-    // i++;
-    // } // while
-    // jString += "}";
-    // } // else
+     // If the Object is a number
+     if (javaObject instanceof BigDecimal)
+     {
+     jString = javaObject.toString();
+     } // if
+    
+     // If the Object is a String
+     else if (javaObject instanceof java.lang.String)
+     {
+     jString = "\"" + javaObject.toString() + "\"";
+     } // else if
+    
+     // If the Object is a symbolic constant
+     else if (javaObject instanceof Boolean || javaObject == null)
+     {
+     jString = javaObject.toString();
+     } // else if
+    
+     // If the Object is a Pair (key-value pair)
+     else if (javaObject instanceof Map.Entry)
+     {
+     JSONParser parser =
+     new JSONParser(((Map.Entry<String, Object>) javaObject).getValue());
+     jString =
+     "\"" + ((Map.Entry<String, Object>) javaObject).getKey().toString()
+     + "\" : " + parser.JavaObjectToStringOfJSON();
+     } // else if
+    
+     // If the Object is an Array
+     else if (javaObject instanceof Array)
+     {
+     jString = "";
+     Object instance;
+     int i = 0;
+     while ((instance = Array.get(javaObject, i)) != null)
+     {
+     JSONParser parser = new JSONParser(instance);
+     jString += parser.JavaObjectToStringOfJSON();
+     i++;
+     } // while
+     } // else if
+    
+     // If the Object is any other type
+     else
+     {
+     jString = "{";
+     int i = 0;
+     Field[] fields = javaObject.getClass().getFields();
+     Field field;
+     while ((field = fields[i]) != null)
+     {
+     JSONParser parser = new JSONParser(field.get(javaObject));
+     if (i != 0)
+     {
+     jString += ", ";
+     } // if
+     jString +=
+     "\"" + field.getName() + "\" : "
+     + parser.JavaObjectToStringOfJSON();
+     i++;
+     } // while
+     jString += "}";
+     } // else
 
-    // // If the Object is a number
-    // if (o instanceof BigDecimal)
-    // {
-    // jString = ((BigDecimal) o).toString();
-    // } // if
-    //
-    // // If the Object is a String
-    // else if (o instanceof String)
-    // {
-    // // TODO SubMethod Stub
-    // } // else if
-    //
-    // // If the Object is a symbolic constant
-    // else if (javaObject instanceof Boolean || javaObject == null)
-    // {
-    // jString = javaObject.toString();
-    // } // else if
-    //
-    // // If the Object is a Pair (key-value pair)
-    // else if (javaObject instanceof Map.Entry)
-    // {
-    // JSONParser parser = new JSONParser (((Map.Entry<String, Object>)
-    // javaObject).getValue());
-    // jString =
-    // "\"" + ((Map.Entry<String, Object>) javaObject).getKey().toString() +
-    // "\" : "
-    // + parser.JavaObjectToStringOfJSON();
-    // } // else if
-    //
-    // // If the Object is an Array
-    // else if (javaObject instanceof Array)
-    // {
-    // jString = "";
-    // Object instance;
-    // int i = 0;
-    // while ((instance = Array.get(javaObject, i)) != null)
-    // {
-    // JSONParser parser = new JSONParser (instance);
-    // jString += parser.JavaObjectToStringOfJSON();
-    // i++;
-    // } // while
-    // } // else if
-    //
-    // // If the Object is any other type
-    // else
-    // {
-    // jString = "{";
-    // int i = 0;
-    // Field[] fields = javaObject.getClass().getFields();
-    // Field field;
-    // while ((field = fields[i]) != null)
-    // {
-    // JSONParser parser = new JSONParser (field.get(javaObject));
-    // if (i != 0)
-    // {
-    // jString += ", ";
-    // } // if
-    // jString += "\"" + field.getName() + "\" : " +
-    // parser.JavaObjectToStringOfJSON();
-    // i++;
-    // } // while
-    // jString += "}";
-    // } // else
+     // If the Object is a number
+     if (o instanceof BigDecimal)
+     {
+     jString = ((BigDecimal) o).toString();
+     } // if
+    
+     // If the Object is a String
+     else if (o instanceof String)
+     {
+     // TODO SubMethod Stub
+     } // else if
+    
+     // If the Object is a symbolic constant
+     else if (javaObject instanceof Boolean || javaObject == null)
+     {
+     jString = javaObject.toString();
+     } // else if
+    
+     // If the Object is a Pair (key-value pair)
+     else if (javaObject instanceof Map.Entry)
+     {
+     JSONParser parser = new JSONParser (((Map.Entry<String, Object>)
+     javaObject).getValue());
+     jString =
+     "\"" + ((Map.Entry<String, Object>) javaObject).getKey().toString() +
+     "\" : "
+     + parser.JavaObjectToStringOfJSON();
+     } // else if
+    
+     // If the Object is an Array
+     else if (javaObject instanceof Array)
+     {
+     jString = "";
+     Object instance;
+     int i = 0;
+     while ((instance = Array.get(javaObject, i)) != null)
+     {
+     JSONParser parser = new JSONParser (instance);
+     jString += parser.JavaObjectToStringOfJSON();
+     i++;
+     } // while
+     } // else if
+    
+     // If the Object is any other type
+     else
+     {
+     jString = "{";
+     int i = 0;
+     Field[] fields = javaObject.getClass().getFields();
+     Field field;
+     while ((field = fields[i]) != null)
+     {
+     JSONParser parser = new JSONParser (field.get(javaObject));
+     if (i != 0)
+     {
+     jString += ", ";
+     } // if
+     jString += "\"" + field.getName() + "\" : " +
+     parser.JavaObjectToStringOfJSON();
+     i++;
+     } // while
+     jString += "}";
+     } // else
 
     return jString;
   } // JavaObjectToStringOfJSON()
