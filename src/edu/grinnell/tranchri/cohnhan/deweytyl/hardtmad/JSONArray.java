@@ -67,7 +67,7 @@ public class JSONArray
     StringBuilder data = new StringBuilder("[");
     if (this.elements.size() == 0)
       {
-        data.append('}');
+        data.append(']');
         return data.toString();
       } // if
 
