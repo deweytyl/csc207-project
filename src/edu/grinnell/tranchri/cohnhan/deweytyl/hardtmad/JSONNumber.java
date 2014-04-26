@@ -99,6 +99,7 @@ public class JSONNumber
     // Handle exponents
     if (ch != null && ((ch == 'e') || (ch == 'E')))
       {
+        charQueue.poll();
         // Make StringBuilder to hold the exponent value
         StringBuilder exptStr = new StringBuilder();
         // Until we hit a terminating character
@@ -106,7 +107,7 @@ public class JSONNumber
                && (ch != ','))
           {
             // Add onto final exponent number
-            exptStr.append(ch);
+            exptStr.append(charQueue.poll());
           } // while
         // Make exptStr into an Integer
         int expt = Integer.parseInt(exptStr.toString());
