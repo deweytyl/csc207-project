@@ -17,8 +17,7 @@ import java.util.Set;
  */
 
 public class JSONObject
-    implements
-      JSONValue
+    implements JSONValue
 {
   // +--------+----------------------------------------
   // | Fields |
@@ -77,7 +76,7 @@ public class JSONObject
       {
         data.append(pair.getKey() + ":" + pair.getValue().toJSONData() + ",");
       }
-    data.setCharAt(data.length()-1, '}');
+    data.setCharAt(data.length() - 1, '}');
     return data.toString();
   }
 
@@ -102,7 +101,7 @@ public class JSONObject
 
     // Remove opening brace
     charQueue.poll();
-    
+
     // Until we are at the end of the object
     while (charQueue.peek() != '}')
       {
@@ -117,7 +116,7 @@ public class JSONObject
         JSONPair pair = JSONPair.parsePair(charQueue);
         val.put(pair.key, pair.value);
       } // while
-    
+
     // Remove end brace.
     charQueue.poll();
 

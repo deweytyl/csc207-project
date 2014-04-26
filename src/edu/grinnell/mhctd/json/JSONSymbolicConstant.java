@@ -14,13 +14,15 @@ import java.util.Queue;
  */
 
 public class JSONSymbolicConstant
-    implements
-      JSONValue
+    implements JSONValue
 {
   // +--------+----------------------------------------
   // | Fields |
   // +--------+
 
+  /**
+   * String to hold a constant.
+   */
   String contents;
 
   // +--------------+----------------------------------------
@@ -67,11 +69,11 @@ public class JSONSymbolicConstant
   {
     return this.contents;
   }
-  
+
   // +-----------------------+----------------------------------------
   // | Utility Class Methods |
   // +-----------------------+
-  
+
   /**
    * Given a JSON string return a JSONSymbolicConstant object.
    * 
@@ -86,7 +88,7 @@ public class JSONSymbolicConstant
   {
     // Make String
     String val = "";
-    
+
     // Following code taken from Sam Rebelsky's JSON.java
     // and adapted.
     // Get the first character
@@ -94,44 +96,44 @@ public class JSONSymbolicConstant
     // Cases for t,f, and n. Check to make sure that
     // they are actually true, false, and null, throws
     // an exception otherwise.
-    switch(ch)
-    {
-      case 't':
-        if((charQueue.poll() == 'r') && (charQueue.poll() == 'u') &&
-            (charQueue.poll() == 'e'))
-          {
-            val = "true";
-          } // if
-        else
-          {
-            throw new Exception ("Invalid constant starting with t.");
-          }
-        break;
-      case 'f':
-        if((charQueue.poll() == 'a') && (charQueue.poll() == 'l') &&
-            (charQueue.poll() == 's') && (charQueue.poll() == 'e'))
-          {
-            val = "false";
-          } // if
-        else
-          {
-            throw new Exception ("Invalid constant starting with f.");
-          }
-        break;
-      case 'n':
-        if((charQueue.poll() == 'u') && (charQueue.poll() == 'l') &&
-            (charQueue.poll() == 'l'))
-          {
-            val = "null";
-          } // if
-        else
-          {
-            throw new Exception ("Invalid constant starting with n.");
-          }
-        break;
-      default:
-        throw new Exception("Invalid constant.");
-    } // switch
+    switch (ch)
+      {
+        case 't':
+          if ((charQueue.poll() == 'r') && (charQueue.poll() == 'u')
+              && (charQueue.poll() == 'e'))
+            {
+              val = "true";
+            } // if
+          else
+            {
+              throw new Exception("Invalid constant starting with t.");
+            }
+          break;
+        case 'f':
+          if ((charQueue.poll() == 'a') && (charQueue.poll() == 'l')
+              && (charQueue.poll() == 's') && (charQueue.poll() == 'e'))
+            {
+              val = "false";
+            } // if
+          else
+            {
+              throw new Exception("Invalid constant starting with f.");
+            }
+          break;
+        case 'n':
+          if ((charQueue.poll() == 'u') && (charQueue.poll() == 'l')
+              && (charQueue.poll() == 'l'))
+            {
+              val = "null";
+            } // if
+          else
+            {
+              throw new Exception("Invalid constant starting with n.");
+            }
+          break;
+        default:
+          throw new Exception("Invalid constant.");
+      } // switch
 
     return new JSONSymbolicConstant(val);
 
