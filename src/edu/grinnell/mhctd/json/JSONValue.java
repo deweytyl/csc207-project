@@ -29,7 +29,7 @@ public interface JSONValue
    * - - it is a number 
    * (any number 0-9) - it is a number
    */
-  public char type (); 
+  public char type();
 
   /**
    * Get the wrapped object
@@ -37,7 +37,7 @@ public interface JSONValue
    * @return obj the Java representation of the JSON value
    */
   public Object value();
-  
+
   /**
    * 
    * @return str, a JSON representation of this object.

@@ -87,10 +87,10 @@ public class JSONNumber
   /**
    * Given a JSON string return a JSONNumber object.
    * 
-   * @param str
+   * @param charQueue
    * @return JSONNumber
    * @throws Exception
-   *           when str is not correct JSON syntax
+   *           when not correct JSON syntax
    */
   public static JSONNumber parseNumber(Queue<Character> charQueue)
     throws Exception

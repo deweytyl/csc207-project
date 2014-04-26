@@ -51,7 +51,7 @@ public class JSONArray
   @Override
   public char type()
   {
-    return 'c';
+    return 'a';
   } // type()
 
   /**

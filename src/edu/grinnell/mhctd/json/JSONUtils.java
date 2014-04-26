@@ -25,7 +25,7 @@ public class JSONUtils
   // +-------------------+----------------------------------------
   // | Parsing JSON Data |
   // +-------------------+
-  
+
   /**
    * Converts str to Queue of Characters so it can be parsed by
    * parseValue(Queue<Character> charQueue)
@@ -41,13 +41,13 @@ public class JSONUtils
     // to make a queue with the characters
     char[] charArray = str.toCharArray();
     Queue<Character> charQueue = new ArrayDeque<Character>(charArray.length);
-    
+
     // Put every character in the array into the queue
     for (Character ch : charArray)
       {
         charQueue.add(ch);
       } // for
-    
+
     return parseValue(charQueue);
   } // parseValue(String)
 
@@ -66,7 +66,7 @@ public class JSONUtils
 
     if (ch != null)
       {
-     // valStr is a number
+        // valStr is a number
         if (Character.isDigit(ch) || ch == '.' || ch == '-')
           {
             return JSONNumber.parseNumber(charQueue);
@@ -101,6 +101,7 @@ public class JSONUtils
   // +--------------------+----------------------------------------
   // | Creating JSON Data |
   // +--------------------+
+<<<<<<< HEAD
   
   /**
    * Turns a supported object into its JSON equivalent
@@ -108,6 +109,9 @@ public class JSONUtils
    * @return a JSON-formatted string representation of the supported object, o
    * @throws Exception, when given an unsupported object type
    */
+=======
+
+>>>>>>> 7924781a49a07fb31e7688ae924c15a9c7297941
   @SuppressWarnings("unchecked")
   public static String JSONData(Object o)
     throws Exception
@@ -129,7 +133,7 @@ public class JSONUtils
           {
             c = new JSONSymbolicConstant(((Boolean) o).toString());
           }
-        else 
+        else
           {
             c = new JSONSymbolicConstant("null");
           }
@@ -140,7 +144,7 @@ public class JSONUtils
         JSONArray arr = new JSONArray((ArrayList<JSONValue>) o);
         return arr.toJSONData();
       }
-    else if (o instanceof Map<?,?>)
+    else if (o instanceof Map<?, ?>)
       {
         JSONObject obj = new JSONObject((Map<String, JSONValue>) o);
         return obj.toJSONData();
@@ -150,7 +154,7 @@ public class JSONUtils
         throw new Exception("Unsupported Object type");
       }
   }
-  
+
   // +-----------------------+----------------------------------------
   // | Utility Class Methods |
   // +-----------------------+
