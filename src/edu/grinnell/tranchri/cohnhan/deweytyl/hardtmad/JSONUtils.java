@@ -34,7 +34,6 @@ public class JSONUtils
    * @return JSONValue of appropriate type
    * @throws Exception
    */
-
   public static JSONValue parseValue(String str)
     throws Exception
   {
@@ -59,7 +58,6 @@ public class JSONUtils
    * @return JSONValue of appropriate type
    * @throws Exception
    */
-
   public static JSONValue parseValue(Queue<Character> charQueue)
     throws Exception
   {
@@ -104,6 +102,12 @@ public class JSONUtils
   // | Creating JSON Data |
   // +--------------------+
   
+  /**
+   * Turns a supported object into its JSON equivalent
+   * @param o, an object
+   * @return a JSON-formatted string representation of the supported object, o
+   * @throws Exception, when given an unsupported object type
+   */
   @SuppressWarnings("unchecked")
   public static String JSONData(Object o)
     throws Exception

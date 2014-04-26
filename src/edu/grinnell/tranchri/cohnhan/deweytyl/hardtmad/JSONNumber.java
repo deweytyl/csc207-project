@@ -15,14 +15,16 @@ import java.util.Queue;
  */
 
 public class JSONNumber
-    implements
-      JSONValue
+    implements JSONValue
 {
   // +--------+----------------------------------------
   // | Fields |
   // +--------+
 
-  public BigDecimal value;
+  /**
+   * A BigDecimal to store the value of this JSONNumber
+   */
+  BigDecimal value;
 
   // +--------------+----------------------------------------
   // | Constructors |
@@ -60,6 +62,18 @@ public class JSONNumber
     return this.value;
   } // value()
 
+  /**
+   * Returns a string representation of this JSONNumber
+   */
+  @Override
+  public String toString()
+  {
+    return this.value.toString();
+  }
+
+  /**
+   * Returns a representation of this number in JSONNumber
+   */
   @Override
   public String toJSONData()
   {
@@ -78,7 +92,6 @@ public class JSONNumber
    * @throws Exception
    *           when str is not correct JSON syntax
    */
-  @SuppressWarnings("null")
   public static JSONNumber parseNumber(Queue<Character> charQueue)
     throws Exception
   {
