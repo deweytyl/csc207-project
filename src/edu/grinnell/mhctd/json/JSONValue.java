@@ -1,4 +1,4 @@
-package edu.grinnell.tranchri.cohnhan.deweytyl.hardtmad;
+package edu.grinnell.mhctd.json;
 
 /**
  * An interface specifying a class which wraps a JSON type and Java object

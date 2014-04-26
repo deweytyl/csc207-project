@@ -1,4 +1,4 @@
-package edu.grinnell.tranchri.cohnhan.deweytyl.hardtmad;
+package edu.grinnell.mhctd.json;
 
 import java.math.BigDecimal;
 import java.util.ArrayDeque;

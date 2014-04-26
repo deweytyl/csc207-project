@@ -1,4 +1,4 @@
-package edu.grinnell.tranchri.cohnhan.deweytyl.hardtmad;
+package edu.grinnell.mhctd.json;
 
 import java.util.Queue;
 
@@ -20,6 +20,9 @@ public class JSONString
   // | Fields |
   // +--------+
 
+  /**
+   * String to hold value of parsed string from JSON.
+   */
   String contents;
 
   // +--------------+----------------------------------------
@@ -189,8 +192,8 @@ public class JSONString
                           str += ch;
                         } // if 
                     } // for          
-                val.append((char) Integer.parseInt(str, 16));
-                break;
+                  val.append((char) Integer.parseInt(str, 16));
+                  break;
                 // Otherwise it is not a valid escape character,
                 // throw an exception
                 default:

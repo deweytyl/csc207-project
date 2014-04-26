@@ -1,4 +1,4 @@
-package edu.grinnell.tranchri.cohnhan.deweytyl.hardtmad;
+package edu.grinnell.mhctd.json;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;

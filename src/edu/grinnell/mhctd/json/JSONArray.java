@@ -1,4 +1,4 @@
-package edu.grinnell.tranchri.cohnhan.deweytyl.hardtmad;
+package edu.grinnell.mhctd.json;
 
 import java.util.ArrayList;
 import java.util.Queue;
@@ -15,13 +15,15 @@ import java.util.Queue;
  */
 
 public class JSONArray
-    implements
-      JSONValue
+    implements JSONValue
 {
   // +--------+----------------------------------------
   // | Fields |
   // +--------+
 
+  /**
+   * Array to hold parsed array values from JSON.
+   */
   public ArrayList<JSONValue> elements;
 
   // +--------------+----------------------------------------
@@ -75,7 +77,7 @@ public class JSONArray
       {
         data.append(element.toJSONData() + ",");
       } // for
-    data.setCharAt(data.length()-1, ']');
+    data.setCharAt(data.length() - 1, ']');
     return data.toString();
   }
 
@@ -86,10 +88,10 @@ public class JSONArray
   /**
    * Given a JSON string return a JSONArray object.
    * 
-   * @param str
+   * @param charQueue
    * @return JSONArray
    * @throws Exception
-   *           when str is not correct JSON syntax
+   *           when not correct JSON syntax
    */
   public static JSONArray parseArray(Queue<Character> charQueue)
     throws Exception
@@ -101,7 +103,7 @@ public class JSONArray
 
     // remove opening brace
     charQueue.poll();
-    
+
     // Until we hit the end of the array...
     while ((ch = charQueue.peek()) != ']')
       {
@@ -114,12 +116,12 @@ public class JSONArray
           {
             val.add(JSONUtils.parseValue(charQueue));
           } // If it isn't, parse the values in the array and add to val
-    
+
       } // while not at the end of the array
-    
+
     // remove final brace
     charQueue.poll();
-    
+
     return new JSONArray(val);
   } // parseArray(String)
 
