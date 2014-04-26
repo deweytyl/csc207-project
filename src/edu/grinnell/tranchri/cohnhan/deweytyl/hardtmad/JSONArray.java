@@ -97,7 +97,6 @@ public class JSONArray
     // Make ArrayList of JSONValues
     ArrayList<JSONValue> val = new ArrayList<JSONValue>();
 
-    @SuppressWarnings("unused")
     Character ch;
 
     // remove opening brace

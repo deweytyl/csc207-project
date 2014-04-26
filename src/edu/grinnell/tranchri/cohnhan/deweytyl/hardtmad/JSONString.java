@@ -205,9 +205,6 @@ public class JSONString
           }
       } // while
     
-    // Remove ending "
-    charQueue.poll();
-
     return new JSONString(val.toString());
   } // parseString(String)
 } // class JSONString

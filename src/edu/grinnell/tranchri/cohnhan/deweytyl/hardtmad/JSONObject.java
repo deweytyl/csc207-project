@@ -77,7 +77,7 @@ public class JSONObject
       {
         data.append(pair.getKey() + ":" + pair.getValue().toJSONData() + ",");
       }
-    data.setCharAt(data.length(), '}');
+    data.setCharAt(data.length()-1, '}');
     return data.toString();
   }
 
@@ -100,6 +100,9 @@ public class JSONObject
     // retrieved
     Map<String, JSONValue> val = new HashMap<String, JSONValue>();
 
+    // Remove opening brace
+    charQueue.poll();
+    
     // Until we are at the end of the object
     while (charQueue.peek() != '}')
       {
@@ -109,11 +112,15 @@ public class JSONObject
             // Remove the comma
             charQueue.poll();
           } // if
+
         // Deal with the pair
-        val.put(JSONPair.parsePair(charQueue).key,
-                JSONPair.parsePair(charQueue).value);
+        JSONPair pair = JSONPair.parsePair(charQueue);
+        val.put(pair.key, pair.value);
       } // while
+    
     // Remove end brace.
+    charQueue.poll();
+
     return new JSONObject(val);
   } // parseObject(String)
 
@@ -170,15 +177,14 @@ public class JSONObject
     public static JSONPair parsePair(Queue<Character> charQueue)
       throws Exception
     {
-      // Get {
-      charQueue.poll();
       JSONString key = JSONString.parseString(charQueue);
       // If the pair does not contain a colon then it is not
       // valid and throw an exception
       // ****** parseString takes off the colon.
       if (charQueue.poll() != ':')
         {
-          throw new Exception("Improper Object Format: improperly constructed pair");
+          throw new Exception(
+                              "Improper Object Format: improperly constructed pair");
         } // if
       // Make JSONPair object with key and value
       JSONPair pair =
