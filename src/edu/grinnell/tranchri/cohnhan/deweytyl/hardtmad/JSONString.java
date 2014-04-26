@@ -177,17 +177,20 @@ public class JSONString
                   val.append('\t');
                   break;
                 case 'u':
-                  // Get the \ and u and throw it away
+                  // Get the u and throw it away
                   charQueue.poll();
-                  charQueue.poll();
-                  
-                  ch = charQueue.poll();
+
                   String str = new String();
-                  while (Character.isDigit(ch) || Character.isLetter(ch))
+                  for (int i = 0; i < 4; i++)
                     {
-                      str += ch;
-                    } // while
-                  val.append((char) Integer.parseInt(str));
+                      ch = charQueue.poll();
+                      if (Character.isDigit(ch) || Character.isLetter(ch))
+                        {
+                          str += ch;
+                        } // if 
+                    } // for          
+                val.append((char) Integer.parseInt(str, 16));
+                break;
                 // Otherwise it is not a valid escape character,
                 // throw an exception
                 default:
@@ -200,9 +203,6 @@ public class JSONString
             val.append(ch);
           }
       } // while
-
-    // Remove ending "
-    charQueue.poll();
 
     return new JSONString(val.toString());
   } // parseString(String)
