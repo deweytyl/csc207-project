@@ -1,4 +1,4 @@
-csc207-project
-==============
+mhctd-JSON
+==========
 
 A JSON Parsing Tool with Unicode support
